@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://cq11wv6f8ypf5"]
+
+[ext_resource type="PackedScene" uid="uid://ccijo1qgc02mv" path="res://Player.tscn" id="1_quucb"]
+[ext_resource type="PackedScene" uid="uid://evwffrvxmtur" path="res://Dog.tscn" id="2_0yfpg"]
+[ext_resource type="PackedScene" uid="uid://c4m4stp35kshw" path="res://Terminal.tscn" id="3_dqhsd"]
+[ext_resource type="PackedScene" uid="uid://ckf72abdcwatc" path="res://DogJumpLauncherLeft.tscn" id="4_6ctwu"]
+[ext_resource type="PackedScene" uid="uid://ci4gb2hu1mqhx" path="res://DogJumpLauncherRight.tscn" id="4_skfc8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cpp15"]
+
+[node name="Room" type="Node"]
+
+[node name="Terminal" parent="." instance=ExtResource("3_dqhsd")]
+position = Vector2(1200, 855)
+
+[node name="Dog" parent="." instance=ExtResource("2_0yfpg")]
+position = Vector2(836, 844)
+
+[node name="DogJumpLauncherLeft2" parent="." instance=ExtResource("4_skfc8")]
+position = Vector2(1485, 880)
+
+[node name="DogJumpLauncherLeft" parent="." instance=ExtResource("4_6ctwu")]
+position = Vector2(435, 880)
+
+[node name="Player" parent="." instance=ExtResource("1_quucb")]
+position = Vector2(554, 833)
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(960, 900)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Wall"]
+scale = Vector2(100, 1)
+shape = SubResource("RectangleShape2D_cpp15")
+
+[node name="Wall2" type="StaticBody2D" parent="."]
+position = Vector2(0, 540)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Wall2"]
+scale = Vector2(1, 50)
+shape = SubResource("RectangleShape2D_cpp15")
+
+[node name="Wall3" type="StaticBody2D" parent="."]
+position = Vector2(1920, 540)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Wall3"]
+scale = Vector2(1, 50)
+shape = SubResource("RectangleShape2D_cpp15")
+
+[node name="Wall4" type="StaticBody2D" parent="."]
+position = Vector2(200, 800)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Wall4"]
+scale = Vector2(20, 10)
+shape = SubResource("RectangleShape2D_cpp15")
+
+[node name="Wall5" type="StaticBody2D" parent="."]
+position = Vector2(1720, 800)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Wall5"]
+scale = Vector2(20, 10)
+shape = SubResource("RectangleShape2D_cpp15")

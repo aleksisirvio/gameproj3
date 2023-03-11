@@ -1,0 +1,17 @@
+res://default_env.tres
+res://Game.tscn
+res://Room.tscn
+res://Game.gd
+res://Player.tscn
+res://Player.gd
+res://Dog.tscn
+res://Dog.gd
+res://Terminal.tscn
+res://DogJumpLauncherLeft.tscn
+res://DogJumpLauncherLeft.gd
+res://DogJumpLauncherRight.tscn
+res://DogJumpLauncherRight.gd
+res://DogTask.tscn
+res://Check.tscn
+res://Interactable.gd
+res://Terminal.gd

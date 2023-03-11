@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4m4stp35kshw"]
+
+[ext_resource type="PackedScene" uid="uid://r63kj61hl176" path="res://Interactable.tscn" id="1_6gq50"]
+[ext_resource type="Script" path="res://Terminal.gd" id="1_30e83"]
+[ext_resource type="Texture2D" uid="uid://bg7sqrjdioc5r" path="res://Sprites/terminal.png" id="1_kfh30"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhsdu"]
+size = Vector2(96, 70)
+
+[node name="Terminal" type="Area2D"]
+collision_layer = 8
+script = ExtResource("1_30e83")
+
+[node name="Interactable" parent="." instance=ExtResource("1_6gq50")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kfh30")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rhsdu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

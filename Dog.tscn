@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://evwffrvxmtur"]
+
+[ext_resource type="Script" path="res://Dog.gd" id="1_jqwhk"]
+[ext_resource type="Texture2D" uid="uid://s04ahivoxydh" path="res://Sprites/dog.png" id="1_o2xcb"]
+[ext_resource type="PackedScene" uid="uid://r63kj61hl176" path="res://Interactable.tscn" id="2_6xn4g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ah5nw"]
+size = Vector2(50, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y55l1"]
+size = Vector2(70, 50)
+
+[node name="Dog" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 20
+script = ExtResource("1_jqwhk")
+
+[node name="Interactable" parent="." instance=ExtResource("2_6xn4g")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_o2xcb")
+offset = Vector2(0, -15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ah5nw")
+
+[node name="Mask" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mask"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_y55l1")
+
+[connection signal="body_entered" from="Mask" to="." method="_on_mask_body_entered"]
+[connection signal="body_exited" from="Mask" to="." method="_on_mask_body_exited"]
