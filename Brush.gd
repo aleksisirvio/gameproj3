@@ -12,6 +12,5 @@ func _on_body_exited(body):
 	interactable.exited(body)
 
 
-func interact(_interacter):
-	# TODO: Open terminal
-	pass
+func interact(interacter):
+	interacter.tool = "brush"

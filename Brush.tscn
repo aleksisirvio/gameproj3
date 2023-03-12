@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://81g5wvgtk67j"]
+
+[ext_resource type="Script" path="res://Brush.gd" id="1_033mx"]
+[ext_resource type="PackedScene" uid="uid://r63kj61hl176" path="res://Interactable.tscn" id="1_ow827"]
+[ext_resource type="Texture2D" uid="uid://1id6ffja8c7s" path="res://Sprites/brush.png" id="2_2uo0k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1pjsl"]
+size = Vector2(26, 26)
+
+[node name="Brush" type="Area2D"]
+collision_layer = 8
+script = ExtResource("1_033mx")
+
+[node name="Interactable" parent="." instance=ExtResource("1_ow827")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_2uo0k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1pjsl")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

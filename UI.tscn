@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm0u0qw5clpvk"]
+
+[ext_resource type="Script" path="res://UI.gd" id="1_0ydio"]
+[ext_resource type="FontFile" uid="uid://bb57ggvwo4ffg" path="res://Fonts/berlin_sans_fb.TTF" id="2_8w22d"]
+
+[node name="UI" type="CanvasGroup"]
+position = Vector2(50, 50)
+script = ExtResource("1_0ydio")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_8w22d")
+theme_override_font_sizes/font_size = 50
+text = "Tasks completed: 0"

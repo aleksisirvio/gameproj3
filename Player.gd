@@ -16,7 +16,8 @@ const max_spd	: int	= 1200
 const jump_spd 	: int 	= 1200
 const grav 		: float = 1500
 
-var check_target : String = ""
+var check_target	# Who player interacts with upon pressing "interact" key
+var tool			# The tool that player is currently holding
 
 
 func _ready():
@@ -38,6 +39,10 @@ func _process(_delta):
 	# Jumping
 	if Input.is_action_pressed("jump") and is_on_floor():
 		velocity.y = -jump_spd
+	
+	# Interacting with interactables
+	if Input.is_action_just_pressed("interact") and check_target:
+		check_target.interact(self)
 	
 	
 func _physics_process(delta):
