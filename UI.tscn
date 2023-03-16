@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://bb57ggvwo4ffg" path="res://Fonts/berlin_sans_fb.TTF" id="2_8w22d"]
 
 [node name="UI" type="CanvasGroup"]
-position = Vector2(50, 50)
+position = Vector2(70, 70)
 script = ExtResource("1_0ydio")
 
 [node name="Control" type="Control" parent="."]

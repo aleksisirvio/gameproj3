@@ -12,8 +12,11 @@ res://Brush.tscn
 res://Interactable.tscn
 res://UI.tscn
 res://Ladder.tscn
-res://UI.gd
-res://Brush.gd
 res://Treat.tscn
+res://UI.gd
 res://Treat.gd
+res://Brush.gd
 res://Dog.gd
+res://FloatingText.tscn
+res://Player.gd
+res://FloatingText.gd

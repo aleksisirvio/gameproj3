@@ -19,6 +19,7 @@ var task_cd			: int = 1
 
 @onready var dog_task = preload("res://DogTask.tscn")
 @onready var check = preload("res://Check.tscn")
+@onready var floating_text = preload("res://FloatingText.tscn")
 
 var task_inst = null
 var want = "" # What does the dog want, e.g., "brush", "wash", "pet"...
@@ -63,12 +64,17 @@ func interact(interacter):
 		"Brush":
 			if interacter.tool == want:
 				interacter.tool = ""
-				ui.get_tool("-")
+				ui.set_tool("-")
 				success = true
 		"Treat":
 			if interacter.tool == want:
 				interacter.tool = ""
-				ui.get_tool("-")
+				ui.set_tool("-")
+				var text_inst = floating_text.instantiate()
+				text_inst.set_text("- " + want)
+				text_inst.position.x = interacter.position.x
+				text_inst.position.y = interacter.position.y - 125
+				get_parent().add_child(text_inst)
 				success = true
 	if success:
 		want = ""

@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cq11wv6f8ypf5"]
+[gd_scene load_steps=12 format=3 uid="uid://cq11wv6f8ypf5"]
 
+[ext_resource type="Texture2D" uid="uid://nraho32btluo" path="res://Sprites/background.png" id="1_a7p6m"]
 [ext_resource type="PackedScene" uid="uid://dcfjeie1d08o6" path="res://Treat.tscn" id="1_fk7mu"]
 [ext_resource type="PackedScene" uid="uid://ccijo1qgc02mv" path="res://Player.tscn" id="1_quucb"]
 [ext_resource type="PackedScene" uid="uid://evwffrvxmtur" path="res://Dog.tscn" id="2_0yfpg"]
@@ -7,14 +8,52 @@
 [ext_resource type="PackedScene" uid="uid://ci4gb2hu1mqhx" path="res://DogJumpLauncherRight.tscn" id="4_skfc8"]
 [ext_resource type="PackedScene" uid="uid://y62yx1xh1flk" path="res://Ladder.tscn" id="7_hpbv6"]
 [ext_resource type="PackedScene" uid="uid://cm0u0qw5clpvk" path="res://UI.tscn" id="7_lv3di"]
+[ext_resource type="Texture2D" uid="uid://breyjnw74g65o" path="res://Sprites/wall.png" id="7_o06og"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vb1li"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpp15"]
+size = Vector2(20, 21.54)
 
 [node name="Room" type="Node"]
 
 [node name="CannonView" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(192, 108)
+texture = ExtResource("1_a7p6m")
+centered = false
+
+[node name="Ladder" parent="." instance=ExtResource("7_hpbv6")]
+position = Vector2(676, 688)
+
+[node name="Platform2" type="StaticBody2D" parent="."]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
+position = Vector2(641, 553)
+scale = Vector2(6, 0.3)
+shape = SubResource("RectangleShape2D_vb1li")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform2"]
+position = Vector2(641, 555)
+scale = Vector2(12, 0.999996)
+texture = ExtResource("7_o06og")
+
+[node name="Platform" type="StaticBody2D" parent="."]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(960, 700)
+scale = Vector2(10, 0.5)
+shape = SubResource("RectangleShape2D_vb1li")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform"]
+position = Vector2(960, 700)
+scale = Vector2(20, 1)
+texture = ExtResource("7_o06og")
 
 [node name="Treat" parent="." instance=ExtResource("1_fk7mu")]
 position = Vector2(1018, 653)
@@ -31,27 +70,6 @@ position = Vector2(435, 880)
 [node name="Player" parent="." instance=ExtResource("1_quucb")]
 position = Vector2(554, 833)
 
-[node name="Ladder" parent="." instance=ExtResource("7_hpbv6")]
-position = Vector2(676, 688)
-
-[node name="Platform2" type="StaticBody2D" parent="."]
-collision_layer = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
-position = Vector2(641, 553)
-scale = Vector2(6, 0.3)
-shape = SubResource("RectangleShape2D_vb1li")
-one_way_collision = true
-
-[node name="Platform" type="StaticBody2D" parent="."]
-collision_layer = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
-position = Vector2(960, 700)
-scale = Vector2(10, 0.5)
-shape = SubResource("RectangleShape2D_vb1li")
-one_way_collision = true
-
 [node name="Wall" type="StaticBody2D" parent="."]
 position = Vector2(960, 900)
 collision_layer = 4
@@ -61,13 +79,38 @@ collision_mask = 0
 scale = Vector2(100, 1)
 shape = SubResource("RectangleShape2D_cpp15")
 
-[node name="Wall2" type="StaticBody2D" parent="."]
-position = Vector2(0, 540)
+[node name="Sprite2D" type="Sprite2D" parent="Wall"]
+position = Vector2(-5.8651e-05, 85)
+scale = Vector2(192, 19)
+texture = ExtResource("7_o06og")
+
+[node name="Wall6" type="StaticBody2D" parent="."]
+position = Vector2(960, 900)
 collision_layer = 4
 collision_mask = 0
 
+[node name="Shape" type="CollisionShape2D" parent="Wall6"]
+scale = Vector2(100, 1)
+shape = SubResource("RectangleShape2D_cpp15")
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall6"]
+position = Vector2(-6.10352e-05, -941)
+scale = Vector2(192, 19)
+texture = ExtResource("7_o06og")
+
+[node name="Wall2" type="StaticBody2D" parent="."]
+position = Vector2(0, 540)
+scale = Vector2(5, 5)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall2"]
+position = Vector2(5.96046e-07, -0.0999985)
+scale = Vector2(2, 21.62)
+texture = ExtResource("7_o06og")
+
 [node name="Shape" type="CollisionShape2D" parent="Wall2"]
-scale = Vector2(1, 50)
+scale = Vector2(1, 11)
 shape = SubResource("RectangleShape2D_cpp15")
 
 [node name="Wall3" type="StaticBody2D" parent="."]
@@ -76,8 +119,14 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="Shape" type="CollisionShape2D" parent="Wall3"]
-scale = Vector2(1, 50)
+position = Vector2(0, -1.5)
+scale = Vector2(5, 50)
 shape = SubResource("RectangleShape2D_cpp15")
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall3"]
+position = Vector2(2.03252e-05, -0.999992)
+scale = Vector2(10, 107.8)
+texture = ExtResource("7_o06og")
 
 [node name="Wall4" type="StaticBody2D" parent="."]
 position = Vector2(200, 800)
@@ -88,6 +137,11 @@ collision_mask = 0
 scale = Vector2(20, 10)
 shape = SubResource("RectangleShape2D_cpp15")
 
+[node name="Sprite2D" type="Sprite2D" parent="Wall4"]
+position = Vector2(1.52588e-05, -3.50005)
+scale = Vector2(40, 20.7)
+texture = ExtResource("7_o06og")
+
 [node name="Wall5" type="StaticBody2D" parent="."]
 position = Vector2(1720, 800)
 collision_layer = 4
@@ -96,5 +150,10 @@ collision_mask = 0
 [node name="Shape" type="CollisionShape2D" parent="Wall5"]
 scale = Vector2(20, 10)
 shape = SubResource("RectangleShape2D_cpp15")
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall5"]
+position = Vector2(-5.00002, -3.50001)
+scale = Vector2(39, 20.7)
+texture = ExtResource("7_o06og")
 
 [node name="UI" parent="." instance=ExtResource("7_lv3di")]

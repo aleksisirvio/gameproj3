@@ -1,10 +1,10 @@
+Control
 Label
+Sprite2D
 Node
 CollisionShape2D
 Area2D
 StaticBody2D
-Control
 CanvasGroup
-Sprite2D
 Node2D
 CharacterBody2D

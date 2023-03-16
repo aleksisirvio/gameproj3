@@ -12,5 +12,5 @@ func increment_task_count():
 	tasks_text.text = "Tasks completed: " + str(task_count)
 
 
-func get_tool(name):
-	tool_text.text = "Tool: " + name
+func set_tool(tool):
+	tool_text.text = "Tool: " + tool
