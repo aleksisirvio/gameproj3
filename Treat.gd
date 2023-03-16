@@ -15,5 +15,5 @@ func _on_body_exited(body):
 
 
 func interact(interacter):
-	interacter.tool = "Brush"
-	ui.get_tool("Brush")
+	interacter.tool = "Treat"
+	ui.get_tool("Treat")

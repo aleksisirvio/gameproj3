@@ -49,7 +49,7 @@ func _process(delta):
 			task_inst = dog_task.instantiate()
 			add_child(task_inst)
 			task_inst.position.y -= 80
-			want = "brush"
+			want = "Treat"
 			
 
 
@@ -60,9 +60,15 @@ func jump():
 func interact(interacter):
 	var success = false
 	match want:
-		"brush":
+		"Brush":
 			if interacter.tool == want:
 				interacter.tool = ""
+				ui.get_tool("-")
+				success = true
+		"Treat":
+			if interacter.tool == want:
+				interacter.tool = ""
+				ui.get_tool("-")
 				success = true
 	if success:
 		want = ""

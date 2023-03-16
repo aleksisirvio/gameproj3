@@ -13,10 +13,19 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="Control"]
+[node name="Tasks" type="Label" parent="Control"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("2_8w22d")
 theme_override_font_sizes/font_size = 50
 text = "Tasks completed: 0"
+
+[node name="Tool" type="Label" parent="Control"]
+layout_mode = 0
+offset_top = 85.0
+offset_right = 112.0
+offset_bottom = 144.0
+theme_override_fonts/font = ExtResource("2_8w22d")
+theme_override_font_sizes/font_size = 50
+text = "Tool: -"

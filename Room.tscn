@@ -1,22 +1,23 @@
-[gd_scene load_steps=9 format=3 uid="uid://cq11wv6f8ypf5"]
+[gd_scene load_steps=10 format=3 uid="uid://cq11wv6f8ypf5"]
 
+[ext_resource type="PackedScene" uid="uid://dcfjeie1d08o6" path="res://Treat.tscn" id="1_fk7mu"]
 [ext_resource type="PackedScene" uid="uid://ccijo1qgc02mv" path="res://Player.tscn" id="1_quucb"]
 [ext_resource type="PackedScene" uid="uid://evwffrvxmtur" path="res://Dog.tscn" id="2_0yfpg"]
-[ext_resource type="PackedScene" uid="uid://81g5wvgtk67j" path="res://Brush.tscn" id="2_rqx8e"]
-[ext_resource type="PackedScene" uid="uid://c4m4stp35kshw" path="res://Terminal.tscn" id="3_dqhsd"]
 [ext_resource type="PackedScene" uid="uid://ckf72abdcwatc" path="res://DogJumpLauncherLeft.tscn" id="4_6ctwu"]
 [ext_resource type="PackedScene" uid="uid://ci4gb2hu1mqhx" path="res://DogJumpLauncherRight.tscn" id="4_skfc8"]
+[ext_resource type="PackedScene" uid="uid://y62yx1xh1flk" path="res://Ladder.tscn" id="7_hpbv6"]
 [ext_resource type="PackedScene" uid="uid://cm0u0qw5clpvk" path="res://UI.tscn" id="7_lv3di"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vb1li"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpp15"]
 
 [node name="Room" type="Node"]
 
-[node name="Terminal" parent="." instance=ExtResource("3_dqhsd")]
-position = Vector2(1200, 855)
+[node name="CannonView" type="Node" parent="."]
 
-[node name="Brush" parent="." instance=ExtResource("2_rqx8e")]
-position = Vector2(1853, 653)
+[node name="Treat" parent="." instance=ExtResource("1_fk7mu")]
+position = Vector2(1018, 653)
 
 [node name="Dog" parent="." instance=ExtResource("2_0yfpg")]
 position = Vector2(836, 844)
@@ -29,6 +30,27 @@ position = Vector2(435, 880)
 
 [node name="Player" parent="." instance=ExtResource("1_quucb")]
 position = Vector2(554, 833)
+
+[node name="Ladder" parent="." instance=ExtResource("7_hpbv6")]
+position = Vector2(676, 688)
+
+[node name="Platform2" type="StaticBody2D" parent="."]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
+position = Vector2(641, 553)
+scale = Vector2(6, 0.3)
+shape = SubResource("RectangleShape2D_vb1li")
+one_way_collision = true
+
+[node name="Platform" type="StaticBody2D" parent="."]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(960, 700)
+scale = Vector2(10, 0.5)
+shape = SubResource("RectangleShape2D_vb1li")
+one_way_collision = true
 
 [node name="Wall" type="StaticBody2D" parent="."]
 position = Vector2(960, 900)
