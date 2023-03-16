@@ -6,6 +6,7 @@ extends Node2D
 
 func _ready():
 	randomize()
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	add_child(room.instantiate())
 
 
