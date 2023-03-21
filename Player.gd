@@ -13,7 +13,7 @@ Collision bit info:
 """
 
 
-enum State { move, climb }
+enum State { move, climb, pause }
 var state : State = State.move
 
 const spd 		: int 	= 400
@@ -34,7 +34,7 @@ func _ready():
 	pass
 	
 	
-func _process(delta):
+func _process(delta):	
 	# Intention to move
 	hmove = 0
 	vmove = 0
@@ -62,6 +62,9 @@ func _process(delta):
 			velocity.y = clamp(velocity.y + grav * delta, -max_spd, max_spd)
 		State.climb:
 			climb()
+		State.pause:
+			pause()
+			return # Don't allow interacting while paused
 	
 	# Interacting with interactables
 	if Input.is_action_just_pressed("interact") and check_target:
@@ -74,6 +77,8 @@ func init_move():
 
 func move():
 	velocity.x = hmove * spd
+	if Input.is_action_pressed("sprint"):
+		velocity.x *= 2
 	
 	# Jumping
 	if Input.is_action_pressed("jump") and on_floor:
@@ -101,6 +106,16 @@ func climb():
 	velocity.y = vmove * spd
 	if Input.is_action_just_pressed("jump") or on_floor:
 		init_move()
+
+
+func init_pause():
+	velocity.x = 0
+	state = State.pause
+	
+
+func pause():
+	# Player does nothing while paused
+	pass
 
 	
 func _physics_process(_delta):

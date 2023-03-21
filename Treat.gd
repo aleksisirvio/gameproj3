@@ -1,18 +1,24 @@
 extends Area2D
 
 
-var title : String = "Treat"
-
 @onready var interactable = $Interactable
 
 @onready var ui = get_parent().get_node("UI")
 
 @onready var floating_text = preload("res://FloatingText.tscn")
 
+const title : String = "Treat"
+
+const max_cd : int = 30
+var cd : int = 0
+
+
+func _process(_delta):
+	if cd > 0:
+		cd -= 1
+
 
 func _on_body_entered(body):
-	if body.tool == title:
-		return
 	interactable.entered(body)
 
 
@@ -21,13 +27,20 @@ func _on_body_exited(body):
 
 
 func interact(interacter):
-	if interacter.tool == title:
+	if cd > 0:
 		return
-	interacter.tool = title
-	ui.set_tool(title)
+	cd = max_cd
 	var text_inst = floating_text.instantiate()
-	text_inst.set_text("+ " + title)
+	if interacter.tool == title:
+		interacter.tool = ""
+		ui.set_tool("-")
+		text_inst.set_text("- " + title)
+	elif interacter.tool == "":
+		interacter.tool = title
+		ui.set_tool(title)
+		text_inst.set_text("+ " + title)
+	else:
+		text_inst.set_text("Holding " + interacter.tool)
 	text_inst.position.x = interacter.position.x
 	text_inst.position.y = interacter.position.y - 125
 	get_parent().add_child(text_inst)
-	_on_body_exited(interacter)

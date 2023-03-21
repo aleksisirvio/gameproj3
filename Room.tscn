@@ -1,14 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://cq11wv6f8ypf5"]
+[gd_scene load_steps=15 format=3 uid="uid://cq11wv6f8ypf5"]
 
 [ext_resource type="Texture2D" uid="uid://nraho32btluo" path="res://Sprites/background.png" id="1_a7p6m"]
 [ext_resource type="PackedScene" uid="uid://dcfjeie1d08o6" path="res://Treat.tscn" id="1_fk7mu"]
 [ext_resource type="PackedScene" uid="uid://ccijo1qgc02mv" path="res://Player.tscn" id="1_quucb"]
 [ext_resource type="PackedScene" uid="uid://evwffrvxmtur" path="res://Dog.tscn" id="2_0yfpg"]
+[ext_resource type="PackedScene" uid="uid://crhd40nvr8uu5" path="res://Cannon.tscn" id="2_m4u3e"]
+[ext_resource type="PackedScene" uid="uid://hfhp7e60qlbi" path="res://CannonBallRack.tscn" id="3_rchnc"]
 [ext_resource type="PackedScene" uid="uid://ckf72abdcwatc" path="res://DogJumpLauncherLeft.tscn" id="4_6ctwu"]
 [ext_resource type="PackedScene" uid="uid://ci4gb2hu1mqhx" path="res://DogJumpLauncherRight.tscn" id="4_skfc8"]
 [ext_resource type="PackedScene" uid="uid://y62yx1xh1flk" path="res://Ladder.tscn" id="7_hpbv6"]
 [ext_resource type="PackedScene" uid="uid://cm0u0qw5clpvk" path="res://UI.tscn" id="7_lv3di"]
 [ext_resource type="Texture2D" uid="uid://breyjnw74g65o" path="res://Sprites/wall.png" id="7_o06og"]
+[ext_resource type="PackedScene" uid="uid://dyj1fsauioldy" path="res://CannonView.tscn" id="10_23dqy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vb1li"]
 
@@ -17,12 +20,19 @@ size = Vector2(20, 21.54)
 
 [node name="Room" type="Node"]
 
-[node name="CannonView" type="Node" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Gray" type="Sprite2D" parent="."]
 scale = Vector2(192, 108)
 texture = ExtResource("1_a7p6m")
 centered = false
+
+[node name="Cannon" parent="." instance=ExtResource("2_m4u3e")]
+position = Vector2(1794, 658)
+
+[node name="CannonBallRack" parent="." instance=ExtResource("3_rchnc")]
+position = Vector2(1371, 855)
+
+[node name="Treat" parent="." instance=ExtResource("1_fk7mu")]
+position = Vector2(1018, 653)
 
 [node name="Ladder" parent="." instance=ExtResource("7_hpbv6")]
 position = Vector2(676, 688)
@@ -54,9 +64,6 @@ one_way_collision = true
 position = Vector2(960, 700)
 scale = Vector2(20, 1)
 texture = ExtResource("7_o06og")
-
-[node name="Treat" parent="." instance=ExtResource("1_fk7mu")]
-position = Vector2(1018, 653)
 
 [node name="Dog" parent="." instance=ExtResource("2_0yfpg")]
 position = Vector2(836, 844)
@@ -155,5 +162,7 @@ shape = SubResource("RectangleShape2D_cpp15")
 position = Vector2(-5.00002, -3.50001)
 scale = Vector2(39, 20.7)
 texture = ExtResource("7_o06og")
+
+[node name="CannonView" parent="." instance=ExtResource("10_23dqy")]
 
 [node name="UI" parent="." instance=ExtResource("7_lv3di")]

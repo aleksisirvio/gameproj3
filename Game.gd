@@ -1,13 +1,9 @@
 extends Node2D
 
 
-@onready var room = preload("res://Room.tscn")
-
-
 func _ready():
 	randomize()
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-	add_child(room.instantiate())
 
 
 func _process(_delta):

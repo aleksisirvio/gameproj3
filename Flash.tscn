@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci8rrxa2oy031"]
+
+[ext_resource type="Texture2D" uid="uid://vqrciewishhk" path="res://Sprites/white.png" id="1_0jojt"]
+[ext_resource type="Script" path="res://Flash.gd" id="2_5t36l"]
+
+[node name="Flash" type="Sprite2D"]
+scale = Vector2(1920, 1080)
+texture = ExtResource("1_0jojt")
+centered = false
+script = ExtResource("2_5t36l")

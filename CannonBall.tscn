@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://clv0p3s8pbfd3"]
+
+[ext_resource type="Script" path="res://CannonBall.gd" id="1_ji0lb"]
+[ext_resource type="Texture2D" uid="uid://b0xks37pq751" path="res://Sprites/cannon_ball.png" id="2_rn6ls"]
+
+[node name="CannonBall" type="ParallaxBackground"]
+layer = 60
+script = ExtResource("1_ji0lb")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(925, 540)
+texture = ExtResource("2_rn6ls")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://7le4o6biw0p3"]
+
+[ext_resource type="Script" path="res://EnemyFortress.gd" id="1_q4ndj"]
+[ext_resource type="Texture2D" uid="uid://c6taiwqjc2s1" path="res://Sprites/enemy_fortress.png" id="2_oe8hc"]
+
+[node name="EnemyFortress" type="ParallaxBackground"]
+layer = 55
+script = ExtResource("1_q4ndj")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+texture = ExtResource("2_oe8hc")
