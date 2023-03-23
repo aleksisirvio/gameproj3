@@ -16,10 +16,10 @@ Collision bit info:
 enum State { move, climb, pause }
 var state : State = State.move
 
-const spd 		: int 	= 400
-const max_spd	: int	= 1200
-const jump_spd 	: int 	= 1200
-const grav 		: float = 3000
+const spd 		: int 	= 300
+const max_spd	: int	= 700
+const jump_spd 	: int 	= 700
+const grav 		: float = 2000
 
 var hmove : int = 0
 var vmove : int = 0

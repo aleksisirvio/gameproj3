@@ -25,7 +25,7 @@ func shoot(who_created, target_pos):
 	print("Target pos ", target_pos)
 	print("Time to target: ", time_to_target)
 	print("Arcing time: ", arcing_time)
-	scroll_offset.x = target_pos.x
+	#scroll_offset.x = target_pos.x
 
 
 func _process(_delta):

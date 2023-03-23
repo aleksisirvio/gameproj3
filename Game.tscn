@@ -1,58 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0d0rrdep0xfc"]
+[gd_scene load_steps=3 format=3 uid="uid://d0d0rrdep0xfc"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_4arvk"]
-[ext_resource type="Script" path="res://MainMenu.gd" id="2_nw4pm"]
-[ext_resource type="Texture2D" uid="uid://cynukkheqfaf5" path="res://Sprites/main_menu_button.png" id="3_2ffp8"]
-[ext_resource type="FontFile" uid="uid://bb57ggvwo4ffg" path="res://Fonts/berlin_sans_fb.TTF" id="4_01qqw"]
+[ext_resource type="PackedScene" uid="uid://b7sc8ppvxrub7" path="res://MainMenu.tscn" id="2_cjmr3"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_4arvk")
 
-[node name="MainMenu" type="Node" parent="."]
-script = ExtResource("2_nw4pm")
-
-[node name="PlayButton" type="Sprite2D" parent="MainMenu"]
-position = Vector2(960, 340)
-texture = ExtResource("3_2ffp8")
-
-[node name="Label" type="Label" parent="MainMenu/PlayButton"]
-offset_left = -280.0
-offset_top = -65.0
-offset_right = 280.0
-offset_bottom = 65.0
-theme_override_fonts/font = ExtResource("4_01qqw")
-theme_override_font_sizes/font_size = 100
-text = "Play"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="OptionsButton" type="Sprite2D" parent="MainMenu"]
-position = Vector2(960, 540)
-texture = ExtResource("3_2ffp8")
-
-[node name="Label" type="Label" parent="MainMenu/OptionsButton"]
-offset_left = -280.0
-offset_top = -65.0
-offset_right = 280.0
-offset_bottom = 65.0
-theme_override_fonts/font = ExtResource("4_01qqw")
-theme_override_font_sizes/font_size = 100
-text = "Options"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ExitButton" type="Sprite2D" parent="MainMenu"]
-position = Vector2(960, 740)
-texture = ExtResource("3_2ffp8")
-
-[node name="Label" type="Label" parent="MainMenu/ExitButton"]
-offset_left = -280.0
-offset_top = -65.0
-offset_right = 280.0
-offset_bottom = 65.0
-theme_override_fonts/font = ExtResource("4_01qqw")
-theme_override_font_sizes/font_size = 100
-text = "Exit
-"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="MainMenu" parent="." instance=ExtResource("2_cjmr3")]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1pvf4ipgrfg2"]
+
+[ext_resource type="FontFile" uid="uid://bb57ggvwo4ffg" path="res://Fonts/berlin_sans_fb.TTF" id="1_t7wbf"]
+[ext_resource type="Script" path="res://TaskText.gd" id="2_7s1oq"]
+
+[node name="Task" type="Label"]
+offset_right = 284.0
+offset_bottom = 59.0
+theme_override_fonts/font = ExtResource("1_t7wbf")
+theme_override_font_sizes/font_size = 35
+text = "TASK ERROR"
+vertical_alignment = 1
+script = ExtResource("2_7s1oq")

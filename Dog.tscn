@@ -12,7 +12,7 @@ size = Vector2(70, 50)
 
 [node name="Dog" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 20
+collision_mask = 52
 script = ExtResource("1_jqwhk")
 
 [node name="Interactable" parent="." instance=ExtResource("2_6xn4g")]

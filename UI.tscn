@@ -3,8 +3,10 @@
 [ext_resource type="Script" path="res://UI.gd" id="1_0ydio"]
 [ext_resource type="FontFile" uid="uid://bb57ggvwo4ffg" path="res://Fonts/berlin_sans_fb.TTF" id="2_8w22d"]
 
-[node name="UI" type="CanvasGroup"]
-position = Vector2(70, 70)
+[node name="UI" type="ParallaxBackground"]
+layer = 80
+offset = Vector2(50, 50)
+transform = Transform2D(1, 0, 0, 1, 50, 50)
 script = ExtResource("1_0ydio")
 
 [node name="Control" type="Control" parent="."]
@@ -13,7 +15,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Tasks" type="Label" parent="Control"]
+[node name="TasksCompleted" type="Label" parent="Control"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
@@ -21,11 +23,44 @@ theme_override_fonts/font = ExtResource("2_8w22d")
 theme_override_font_sizes/font_size = 50
 text = "Tasks completed: 0"
 
+[node name="TasksFailed" type="Label" parent="Control"]
+layout_mode = 0
+offset_top = 62.0
+offset_right = 397.0
+offset_bottom = 121.0
+theme_override_fonts/font = ExtResource("2_8w22d")
+theme_override_font_sizes/font_size = 50
+text = "Tasks failed: 0/5"
+
 [node name="Tool" type="Label" parent="Control"]
 layout_mode = 0
-offset_top = 85.0
-offset_right = 112.0
-offset_bottom = 144.0
+offset_top = 130.0
+offset_right = 131.0
+offset_bottom = 189.0
 theme_override_fonts/font = ExtResource("2_8w22d")
 theme_override_font_sizes/font_size = 50
 text = "Tool: -"
+
+[node name="Test" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 555.0
+offset_top = 19.0
+offset_right = 595.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("2_8w22d")
+theme_override_font_sizes/font_size = 30
+
+[node name="CurrentTasks" type="Control" parent="Control"]
+anchors_preset = 0
+offset_top = 225.0
+offset_right = 40.0
+offset_bottom = 265.0
+
+[node name="Title" type="Label" parent="Control/CurrentTasks"]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 284.0
+offset_bottom = 63.0
+theme_override_fonts/font = ExtResource("2_8w22d")
+theme_override_font_sizes/font_size = 50
+text = "Current tasks:"
