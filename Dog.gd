@@ -17,10 +17,12 @@ var task_cd			: int = 1
 
 @onready var ui = get_parent().get_node("UI")
 @onready var task_manager = get_parent().get_node("TaskManager")
+@onready var player = get_parent().get_node("Player")
 
 @onready var dog_task = preload("res://DogTask.tscn")
 @onready var check = preload("res://Check.tscn")
 @onready var floating_text = preload("res://FloatingText.tscn")
+@onready var petting_game = preload("res://PettingGame.tscn")
 
 var task_inst = null
 var wants : Array = [] # What does the dog want, e.g., "brush", "wash", "pet"...
@@ -92,10 +94,14 @@ func interact(interacter):
 					text_inst.position.y = interacter.position.y - 125
 					get_parent().add_child(text_inst)
 					success = true
+			"Pet":
+				if interacter.tool == "":
+					player.init_pause()
+					var petting_game_inst = petting_game.instantiate()
+					petting_game_inst.task_index = i
+					get_parent().add_child(petting_game_inst)
 		if success:
-			task_manager.pass_task(wants_pos[i])
-			wants.remove_at(i)
-			wants_pos.remove_at(i)
+			pass_task_at(i)
 			"""
 			task_inst.queue_free()
 			task_inst = null
@@ -103,6 +109,13 @@ func interact(interacter):
 			task_cd = max_task_cd
 			_on_mask_body_exited(interacter)
 			break
+			
+			
+func pass_task_at(index):
+	task_manager.pass_task(wants_pos[index])
+	wants.remove_at(index)
+	wants_pos.remove_at(index)
+	#task_cd = max_task_cd
 
 
 func del_want(pos):

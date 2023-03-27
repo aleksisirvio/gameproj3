@@ -4,9 +4,8 @@ extends Node
 @onready var ui = get_parent().get_node("UI")
 @onready var dog = get_parent().get_node("Dog")
 
-enum Task { treat }
-const task_durations : Array = [900]
-const available_tasks = 1 # Update when enumarating new tasks
+enum Task { treat, pet }
+const task_durations : Array = [900, 900]
 
 const max_tasks : int = 3
 var current_tasks : int = 0
@@ -37,7 +36,7 @@ func _process(_delta):
 			if tasks[i] == null:
 				free_pos = i
 				break
-		var rand = randi() % (available_tasks)
+		var rand = randi() % (task_durations.size())
 		tasks[free_pos] = rand
 		current_tasks += 1
 		assign_timer = max_assign_timer
@@ -48,6 +47,10 @@ func _process(_delta):
 			Task.treat:
 				desc = "Get the dog a treat"
 				dog.wants.append("Treat")
+				dog.wants_pos.append(free_pos)
+			Task.pet:
+				desc = "Pet the dog"
+				dog.wants.append("Pet")
 				dog.wants_pos.append(free_pos)
 		ui.add_task(desc, task_durations[rand], free_pos)
 

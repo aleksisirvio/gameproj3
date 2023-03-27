@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://cavegu7recbl0"]
+
+[ext_resource type="Script" path="res://PettingGame.gd" id="1_3nxla"]
+[ext_resource type="Texture2D" uid="uid://dkf5rqawn0lok" path="res://Sprites/pet_bar.png" id="2_1cxke"]
+[ext_resource type="Texture2D" uid="uid://b0k5j2f83sgw5" path="res://Sprites/pet_bar_hit.png" id="3_dvcjp"]
+[ext_resource type="Texture2D" uid="uid://clw11n0612aoq" path="res://Sprites/pet_bar_pointer.png" id="3_f1db0"]
+[ext_resource type="Texture2D" uid="uid://dtif37rvwfh65" path="res://Sprites/pet_bar_threshold.png" id="4_iqi1o"]
+[ext_resource type="Texture2D" uid="uid://deqmy8j44ynm4" path="res://Sprites/pet_bar_miss.png" id="4_rrpy2"]
+[ext_resource type="FontFile" uid="uid://bb57ggvwo4ffg" path="res://Fonts/berlin_sans_fb.TTF" id="5_p1n46"]
+
+[node name="PettingGame" type="ParallaxBackground"]
+layer = 50
+script = ExtResource("1_3nxla")
+
+[node name="Bg" type="Sprite2D" parent="."]
+texture = ExtResource("2_1cxke")
+
+[node name="HitColor" type="Sprite2D" parent="."]
+texture = ExtResource("3_dvcjp")
+
+[node name="MissColor" type="Sprite2D" parent="."]
+texture = ExtResource("4_rrpy2")
+
+[node name="Pointer" type="Sprite2D" parent="."]
+texture = ExtResource("3_f1db0")
+
+[node name="LeftThreshold" type="Sprite2D" parent="."]
+texture = ExtResource("4_iqi1o")
+
+[node name="RightThreshold" type="Sprite2D" parent="."]
+texture = ExtResource("4_iqi1o")
+
+[node name="HitsLabel" type="Label" parent="."]
+offset_left = -55.0
+offset_top = -143.0
+offset_right = 54.0
+offset_bottom = -51.0
+theme_override_fonts/font = ExtResource("5_p1n46")
+theme_override_font_sizes/font_size = 80
+text = "0/5"
+horizontal_alignment = 1
+vertical_alignment = 1

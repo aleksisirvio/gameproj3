@@ -1,9 +1,9 @@
+Sprite2D
+Label
 ParallaxBackground
 ParallaxLayer
-Sprite2D
 Node
 CollisionShape2D
-Label
 Control
 Area2D
 StaticBody2D
