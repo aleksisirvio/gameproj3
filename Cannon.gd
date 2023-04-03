@@ -7,6 +7,8 @@ extends Area2D
 
 @onready var cannon_view = get_parent().get_node("CannonView")
 
+var title : String = "Cannon"
+
 
 func _on_body_entered(body):
 	interactable.entered(body)

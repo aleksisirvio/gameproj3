@@ -25,8 +25,9 @@ var hmove : int = 0
 var vmove : int = 0
 var on_floor : bool = false
 
-var check_target = null	# Who player interacts with upon pressing "interact" key
-var tool = ""			# The tool that player is currently holding
+#var check_target = null	# Who player interacts with upon pressing "interact" key
+var targets : Array = []	# All interactables player is colliding with
+var tool = ""				# The tool that player is currently holding
 var ladder = null
 
 
@@ -67,9 +68,23 @@ func _process(delta):
 			return # Don't allow interacting while paused
 	
 	# Interacting with interactables
-	if Input.is_action_just_pressed("interact") and check_target:
-		check_target.interact(self)
+	if Input.is_action_just_pressed("interact"):
+		for target in targets:
+			target.interact(self)
 	
+
+func add_target(target):
+	targets.append(target)
+	
+
+func remove_target(target_name):
+	var i = 0
+	while i < targets.size():
+		if targets[i].name == target_name:
+			targets.remove_at(i)
+			i = -1
+		i += 1
+
 
 func init_move():
 	state = State.move
@@ -77,8 +92,8 @@ func init_move():
 
 func move():
 	velocity.x = hmove * spd
-	if Input.is_action_pressed("sprint"):
-		velocity.x *= 2
+	#if Input.is_action_pressed("sprint"):
+	#	velocity.x *= 2
 	
 	# Jumping
 	if Input.is_action_pressed("jump") and on_floor:

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dawh51r2vomp5"]
+
+[ext_resource type="Script" path="res://PoopBag.gd" id="1_1d65n"]
+[ext_resource type="PackedScene" uid="uid://r63kj61hl176" path="res://Interactable.tscn" id="2_gbfyx"]
+[ext_resource type="Texture2D" uid="uid://ddfrhtqxg11ep" path="res://Sprites/poop_bags.png" id="3_47nwm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1pjsl"]
+size = Vector2(50, 50)
+
+[node name="PoopBag" type="Area2D"]
+collision_layer = 8
+script = ExtResource("1_1d65n")
+
+[node name="Interactable" parent="." instance=ExtResource("2_gbfyx")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("3_47nwm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1pjsl")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

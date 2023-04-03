@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cq11wv6f8ypf5"]
+[gd_scene load_steps=21 format=3 uid="uid://cq11wv6f8ypf5"]
 
 [ext_resource type="Texture2D" uid="uid://nraho32btluo" path="res://Sprites/background.png" id="1_a7p6m"]
 [ext_resource type="PackedScene" uid="uid://dcfjeie1d08o6" path="res://Treat.tscn" id="1_fk7mu"]
@@ -8,12 +8,16 @@
 [ext_resource type="PackedScene" uid="uid://hfhp7e60qlbi" path="res://CannonBallRack.tscn" id="3_rchnc"]
 [ext_resource type="PackedScene" uid="uid://ckf72abdcwatc" path="res://DogJumpLauncherLeft.tscn" id="4_6ctwu"]
 [ext_resource type="PackedScene" uid="uid://ci4gb2hu1mqhx" path="res://DogJumpLauncherRight.tscn" id="4_skfc8"]
+[ext_resource type="PackedScene" uid="uid://dawh51r2vomp5" path="res://PoopBag.tscn" id="5_jofpx"]
+[ext_resource type="PackedScene" uid="uid://c1hec3q0gt7se" path="res://TrashCan.tscn" id="7_2ll8m"]
 [ext_resource type="PackedScene" uid="uid://y62yx1xh1flk" path="res://Ladder.tscn" id="7_hpbv6"]
 [ext_resource type="PackedScene" uid="uid://cm0u0qw5clpvk" path="res://UI.tscn" id="7_lv3di"]
 [ext_resource type="Texture2D" uid="uid://breyjnw74g65o" path="res://Sprites/wall.png" id="7_o06og"]
 [ext_resource type="PackedScene" uid="uid://dyj1fsauioldy" path="res://CannonView.tscn" id="10_23dqy"]
 [ext_resource type="PackedScene" uid="uid://c6vf8jsttn0ti" path="res://Wall.tscn" id="11_rnxi1"]
 [ext_resource type="PackedScene" uid="uid://dnqvd34satpg8" path="res://TaskManager.tscn" id="13_qxmpo"]
+[ext_resource type="AudioStream" uid="uid://cslll3n3q8qs4" path="res://Audio/spookybutler_hq.wav" id="15_7241c"]
+[ext_resource type="Script" path="res://MainThemePlayer.gd" id="16_siysq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vb1li"]
 
@@ -38,6 +42,12 @@ scale = Vector2(0.75, 0.75)
 [node name="Treat" parent="." instance=ExtResource("1_fk7mu")]
 position = Vector2(835, 400)
 
+[node name="PoopBag" parent="." instance=ExtResource("5_jofpx")]
+position = Vector2(1191, 845)
+
+[node name="TrashCan" parent="." instance=ExtResource("7_2ll8m")]
+position = Vector2(383, 775)
+
 [node name="Walls" type="Node" parent="."]
 
 [node name="Ladder" parent="Walls" instance=ExtResource("7_hpbv6")]
@@ -45,8 +55,8 @@ position = Vector2(595, 604)
 scale = Vector2(0.7, 0.7)
 
 [node name="Ladder2" parent="Walls" instance=ExtResource("7_hpbv6")]
-position = Vector2(1500, 406)
-scale = Vector2(0.7, 0.6)
+position = Vector2(1501, 387)
+scale = Vector2(0.7, 0.7)
 
 [node name="Platform" type="StaticBody2D" parent="Walls"]
 position = Vector2(595, 513)
@@ -205,7 +215,7 @@ position = Vector2(1079, 592)
 position = Vector2(510, 800)
 
 [node name="DogJumpLauncherLeft" parent="." instance=ExtResource("4_6ctwu")]
-position = Vector2(1119, 409)
+position = Vector2(151, 798)
 
 [node name="Player" parent="." instance=ExtResource("1_quucb")]
 position = Vector2(1067, 814)
@@ -215,3 +225,8 @@ position = Vector2(1067, 814)
 [node name="CannonView" parent="." instance=ExtResource("10_23dqy")]
 
 [node name="TaskManager" parent="." instance=ExtResource("13_qxmpo")]
+
+[node name="MainThemePlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_7241c")
+volume_db = -10.0
+script = ExtResource("16_siysq")

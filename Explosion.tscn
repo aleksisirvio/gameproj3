@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dww2nklvtik5j"]
+
+[ext_resource type="Texture2D" uid="uid://b3ro5rxls5oar" path="res://Sprites/explosion.png" id="1_bb80f"]
+[ext_resource type="Script" path="res://Explosion.gd" id="2_x0uak"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+layer = 70
+
+[node name="Explosion" type="Sprite2D" parent="."]
+texture = ExtResource("1_bb80f")
+script = ExtResource("2_x0uak")

@@ -10,7 +10,7 @@ func entered(body):
 	check_inst = check.instantiate()
 	body.add_child(check_inst)
 	check_inst.position.y -= 75
-	body.check_target = get_parent()
+	body.add_target(get_parent())
 
 
 func exited(body):
@@ -18,4 +18,9 @@ func exited(body):
 	if check_inst:
 		check_inst.queue_free()
 		check_inst = null
-	body.check_target = ""
+	"""
+	if body.check_target != null:
+		if get_parent().title == body.check_target.name:
+			body.check_target = null
+	"""
+	body.remove_target(get_parent().name)

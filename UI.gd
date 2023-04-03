@@ -10,8 +10,13 @@ var failed_tasks : int = 0
 @onready var tool_text = $Control/Tool
 @onready var test = $Control/Test
 @onready var current_tasks_node = $Control/CurrentTasks
+@onready var fps_text = $Control/FPS
 
 @onready var task_text_res = preload("res://TaskText.tscn")
+
+
+func _process(_delta):
+	fps_text.text = str(Engine.get_frames_per_second())
 
 
 func set_test(txt):

@@ -36,20 +36,21 @@ func _ready():
 	miss_color.modulate.a = 0
 
 
-func _process(_delta):
+func _process(delta):
 	# Move the pointer
-	pos += spd * dir
+	pos += spd * dir * delta * 60
 	pointer.offset.x = pos
 	if pos <= -size or pos >= size:
 		dir = -dir
+		pos += dir * 10
 	
 	if pos > -size + threshold and pos < size - threshold:
 		pressed = false
 		
 	if hit_color.modulate.a > 0:
-		hit_color.modulate.a -= .1
+		hit_color.modulate.a -= .1 * delta * 60
 	if miss_color.modulate.a > 0:
-		miss_color.modulate.a -= .1
+		miss_color.modulate.a -= .1 * delta * 60
 	
 	# Pressing the buttons
 	var hit = 0

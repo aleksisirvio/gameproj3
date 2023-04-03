@@ -9,13 +9,13 @@ extends Area2D
 
 const title : String = "Treat"
 
-const max_cd : int = 30
-var cd : int = 0
+const max_cd : float = 30
+var cd : float = 0
 
 
-func _process(_delta):
+func _process(delta):
 	if cd > 0:
-		cd -= 1
+		cd -= delta * 60
 
 
 func _on_body_entered(body):

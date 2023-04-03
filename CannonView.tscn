@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dyj1fsauioldy"]
+[gd_scene load_steps=5 format=3 uid="uid://dyj1fsauioldy"]
 
 [ext_resource type="Script" path="res://CannonController.gd" id="1_gu2f1"]
 [ext_resource type="Script" path="res://CannonView.gd" id="1_kju7d"]
 [ext_resource type="Texture2D" uid="uid://cnmwpag3awgv5" path="res://Sprites/first_person_bg.png" id="2_1mmve"]
-[ext_resource type="PackedScene" uid="uid://7le4o6biw0p3" path="res://EnemyFortress.tscn" id="4_2uslb"]
 [ext_resource type="Texture2D" uid="uid://yegphnwtt058" path="res://Sprites/cannon_scope.png" id="4_443ru"]
 
 [node name="CannonView" type="Node"]
@@ -23,9 +22,6 @@ motion_mirroring = Vector2(1920, 0)
 texture = ExtResource("2_1mmve")
 centered = false
 offset = Vector2(0, -125)
-
-[node name="EnemyFortress" parent="." instance=ExtResource("4_2uslb")]
-visible = false
 
 [node name="Scope" type="ParallaxBackground" parent="."]
 layer = 65

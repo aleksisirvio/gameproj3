@@ -1,6 +1,7 @@
-Sprite2D
 Label
+AudioStreamPlayer
 ParallaxBackground
+Sprite2D
 ParallaxLayer
 Node
 CollisionShape2D

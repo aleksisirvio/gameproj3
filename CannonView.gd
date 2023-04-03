@@ -12,23 +12,25 @@ func _ready():
 
 func activate():
 	controller.active = true
-	bg.visible = true
-	scope.visible = true
-	if has_node("EnemyFortress"):
-		$EnemyFortress.visible = true
-	if has_node("CannonBall"):
-		$CannonBall.visible = true
+	for child in get_children():
+		if child is ParallaxBackground:
+			child.visible = true
 
 
 func deactivate():
 	controller.active = false
-	bg.visible = false
-	scope.visible = false
-	if has_node("EnemyFortress"):
-		$EnemyFortress.visible = false
-	if has_node("CannonBall"):
-		$CannonBall.visible = false
+	for child in get_children():
+		if child is ParallaxBackground:
+			child.visible = false
 
 
 func add_ball():
 	controller.has_ball = true
+
+
+func set_enemy_fortress(which):
+	controller.set_enemy_fortress(which)
+
+
+func is_active():
+	return controller.active

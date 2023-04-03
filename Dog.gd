@@ -1,17 +1,18 @@
 extends CharacterBody2D
 
 
-const spd 			: int 	= 75
-const max_spd		: int	= 1000
-const jump_spd 		: int 	= 1000
+const spd 			: float 	= 75
+const max_spd		: float	= 1000
+const jump_spd 		: float 	= 1000
 const grav 			: float = 1500
 
-var max_move_timer	: int	= 180
-var move_timer		: int	= 1
+var max_move_timer	: float	= 180
+var move_timer		: float	= 1
 var hmove			: int	= 0
+var move			: bool	= true
 
-var max_task_cd		: int = 300
-var task_cd			: int = 1
+var max_task_cd		: float = 300
+var task_cd			: float = 1
 
 @onready var interactable = $Interactable
 
@@ -28,6 +29,8 @@ var task_inst = null
 var wants : Array = [] # What does the dog want, e.g., "brush", "wash", "pet"...
 var wants_pos : Array = []
 
+var title : String = "Dog"
+
 
 func _ready():
 	pass
@@ -35,8 +38,8 @@ func _ready():
 	
 func _process(delta):
 	# Occasionally change movement direction
-	move_timer -= delta
-	if move_timer == 0:
+	move_timer -= delta * 60
+	if move_timer <= 0 and move:
 		move_timer = max_move_timer
 		var rand = randi() % 9
 		if rand < 3:
@@ -107,15 +110,14 @@ func interact(interacter):
 			task_inst = null
 			"""
 			task_cd = max_task_cd
-			_on_mask_body_exited(interacter)
+			#_on_mask_body_exited(interacter)
 			break
 			
 			
 func pass_task_at(index):
-	task_manager.pass_task(wants_pos[index])
+	task_manager.pass_task_at(wants_pos[index])
 	wants.remove_at(index)
 	wants_pos.remove_at(index)
-	#task_cd = max_task_cd
 
 
 func del_want(pos):
@@ -126,22 +128,19 @@ func del_want(pos):
 
 
 func _physics_process(delta):
-	velocity.y += grav * delta
 	velocity.y = clamp(velocity.y + grav * delta, -max_spd, max_spd)
 	move_and_slide()
 
 
 func _on_mask_body_entered(body):
-	#if !task_inst:
-	#	return
 	interactable.entered(body)
 	# Stop the dog from moving while colliding with the player
 	hmove = 0
-	move_timer = -1
+	move = false
 
 
 func _on_mask_body_exited(body):
 	interactable.exited(body)
 	# Allow dog to move once more
-	if move_timer == -1:
-		move_timer = 1
+	move = true
+	move_timer = 1

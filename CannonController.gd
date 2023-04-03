@@ -6,7 +6,7 @@ extends Node
 @onready var bg = get_parent().get_node("Background")
 @onready var scope = get_parent().get_node("Scope")
 
-@onready var enemy_fortress = get_parent().get_node("EnemyFortress")
+@onready var enemy_fortress = null
 @onready var cannon_ball = null
 
 @onready var cannon_ball_res = preload("res://CannonBall.tscn")
@@ -21,7 +21,7 @@ var active : bool = false
 var has_ball : bool = false
 
 
-func _process(_delta):
+func _process(delta):
 	if !active:
 		return
 	
@@ -29,31 +29,34 @@ func _process(_delta):
 	var hmove = player.hmove
 	var vmove = player.vmove
 	
-	# Calculate cannon turning speed with intertia
+	# Calculate cannon turning speed with inertia
 	if sign(vel.x) != hmove or abs(vel.x) < max_spd:
-		vel.x += hmove * acc
+		vel.x += hmove * acc * delta * 60
 	if sign(vel.y) != vmove or abs(vel.y) < max_spd:
-		vel.y += vmove * acc
+		vel.y += vmove * acc * delta * 60
 	if hmove == 0:
-		vel.x -= sign(vel.x) * acc
+		vel.x -= sign(vel.x) * acc * delta * 60
 		if abs(vel.x) < .1:
 			vel.x = 0
 	if vmove == 0:
-		vel.y -= sign(vel.y) * acc
+		vel.y -= sign(vel.y) * acc * delta * 60
 		if abs(vel.y) < .1:
 			vel.y = 0
 	
-	# Cannon actually doesn't move, everything else moves
-	bg.scroll_offset.x -= vel.x
-	bg.scroll_offset.y = clamp(bg.scroll_offset.y - vel.y, -125, 125)
+	# Cannon actually doesn't move, everything else is moved
+	bg.scroll_offset.x = clamp(bg.scroll_offset.x - (vel.x * delta * 60), -1920, 1920)
+	bg.scroll_offset.y = clamp(bg.scroll_offset.y - (vel.y * delta * 60), -125, 125)
 	if bg.scroll_offset.y >= 125 or bg.scroll_offset.y <= -125:
 		vel.y = 0
+	if bg.scroll_offset.x >= 1920 or bg.scroll_offset.x <= -1920:
+		vel.x = 0
 	
 	if enemy_fortress != null:
-		enemy_fortress.scroll_offset = bg.scroll_offset
+		enemy_fortress.offset.x -= vel.x * delta * 60
+		enemy_fortress.offset.y -= vel.y * delta * 60
 	if cannon_ball != null:
-		cannon_ball.scroll_offset.x -= vel.x
-		cannon_ball.scroll_offset.y -= vel.y
+		cannon_ball.offset.x -= vel.x * delta * 60
+		cannon_ball.offset.y -= vel.y * delta * 60
 	
 	# Shoot the cannon
 	if Input.is_action_just_pressed("jump"):
