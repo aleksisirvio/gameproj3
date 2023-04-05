@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdn8nyysfgyys"]
+
+[ext_resource type="Script" path="res://EnemyCannonBall.gd" id="1_smsy3"]
+[ext_resource type="Texture2D" uid="uid://b0xks37pq751" path="res://Sprites/cannon_ball.png" id="2_tjge3"]
+
+[node name="EnemyCannonBall" type="ParallaxBackground"]
+layer = 60
+script = ExtResource("1_smsy3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tjge3")

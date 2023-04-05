@@ -24,7 +24,9 @@ func interact(_interacter):
 	
 	# Add player's cannon ball to the cannon
 	if player.tool == "Cannon Ball":
-		cannon_view.add_ball()
+		cannon_view.add_ball("Cannon Ball")
+	elif player.tool == "Bag Filled With Poop":
+		cannon_view.add_ball("Bag Filled With Poop")
 	
 	# Open cannon view
 	cannon_view.activate()

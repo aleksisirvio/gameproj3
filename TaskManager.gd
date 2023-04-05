@@ -49,6 +49,8 @@ func _process(delta):
 				continue
 			"""
 			if current_tasks == 0:
+				rand = Task.enemy_fortress
+			if current_tasks == 1:
 				rand = Task.poop
 			"""
 			tasks[free_pos] = rand

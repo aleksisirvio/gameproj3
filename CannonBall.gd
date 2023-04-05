@@ -18,14 +18,21 @@ var arc_spd : float = -5
 
 var creator = null
 
+var type : String = ""
+
 
 # Always call this method when creating a cannon ball node
-func shoot(who_created, target_pos):
+func shoot(who_created, target_pos, what_type):
+	type = what_type
 	creator = who_created
 	time_to_target = 30 + (1350 + target_pos.y * 2) / 20
 	timer = time_to_target
 	arcing_time = time_to_target - 70
 	real_x = 1920.0 / 2.0 - target_pos.x
+	
+	# Get rid of poop cleaning task if shooting poop
+	if type == "Bag Filled With Poop":
+		get_parent().get_parent().get_node("TaskManager").pass_task(3)
 
 
 func _process(delta):
@@ -72,7 +79,10 @@ func _process(delta):
 					var explo_inst = explosion.instantiate()
 					explo_inst.offset = sprite.position
 					get_parent().add_child(explo_inst)
-				target.take_damage(1)
+				if type == "Bag Filled With Poop":
+					target.take_damage(100)
+				else:
+					target.take_damage(1)
 			
 			print("")
 			print("Ball bb: ", r1)

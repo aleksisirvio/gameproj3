@@ -24,8 +24,8 @@ func deactivate():
 			child.visible = false
 
 
-func add_ball():
-	controller.has_ball = true
+func add_ball(which):
+	controller.ball = which
 
 
 func set_enemy_fortress(which):

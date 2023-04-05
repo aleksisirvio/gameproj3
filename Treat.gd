@@ -30,6 +30,9 @@ func interact(interacter):
 	if cd > 0:
 		return
 	cd = max_cd
+	if interactable.on_fire:
+		interactable.interact_on_fire(interacter)
+		return
 	var text_inst = floating_text.instantiate()
 	if interacter.tool == title:
 		interacter.tool = ""

@@ -29,5 +29,6 @@ visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Scope"]
 z_index = 4096
+position = Vector2(-20, -20)
 texture = ExtResource("4_443ru")
 centered = false

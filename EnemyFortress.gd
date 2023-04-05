@@ -1,6 +1,8 @@
 extends ParallaxBackground
 
 
+@onready var cannon_ball = preload("res://EnemyCannonBall.tscn")
+
 @onready var controller = get_parent().get_node("CannonController")
 @onready var task_manager = get_parent().get_parent().get_node("TaskManager")
 
@@ -14,6 +16,9 @@ var vel : Vector2 = Vector2()
 
 const max_move_cd : float = 300
 var move_cd : float = 1
+
+var max_shoot_cd : float = 600
+var shoot_cd : float = max_shoot_cd
 
 var hp = 2
 
@@ -53,6 +58,19 @@ func _process(delta):
 	
 	# Set bounding box
 	bb = Rect2(sprite.position.x - sprite.scale.x * 1000 / 2, sprite.position.y - sprite.scale.y * 1000 / 2, sprite.scale.x * 1000, sprite.scale.y * 1000)
+	
+	# Shooting
+	shoot_cd -= delta * 60
+	if shoot_cd <= 0:
+		shoot_cd = max_shoot_cd + randi() % 120
+		var cannon_ball_inst = cannon_ball.instantiate()
+		cannon_ball_inst.get_node("Sprite2D").position = sprite.position
+		cannon_ball_inst.get_node("Sprite2D").scale = Vector2(0,0)
+		cannon_ball_inst.offset = offset
+		cannon_ball_inst.visible = visible
+		cannon_ball_inst.shoot(sprite.position)
+		get_parent().add_child(cannon_ball_inst)
+		controller.set_enemy_fortress_cannon_ball(cannon_ball_inst)
 	
 
 func take_damage(amount):
