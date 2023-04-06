@@ -1,7 +1,8 @@
+AudioStreamPlayer2D
+AudioStreamPlayer
 Sprite2D
 Node2D
 Label
-AudioStreamPlayer
 ParallaxBackground
 ParallaxLayer
 Node

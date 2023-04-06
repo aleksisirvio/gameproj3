@@ -8,6 +8,8 @@ extends Node
 @onready var enemy_fort = preload("res://EnemyFortress.tscn")
 @onready var poop = preload("res://Poop.tscn")
 
+@onready var task_arrival_player = $TaskArrivalPlayer
+
 enum Task { treat, pet, enemy_fortress, poop }
 const task_durations : Array = [1800, 2500, 4200, 2500]
 
@@ -58,6 +60,7 @@ func _process(delta):
 			
 		current_tasks += 1
 		assign_timer = max_assign_timer
+		task_arrival_player.play()
 		
 		# Add new task to UI and communicate to other relevant nodes
 		var desc = "ERROR"

@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnqvd34satpg8"]
+[gd_scene load_steps=4 format=3 uid="uid://dnqvd34satpg8"]
 
 [ext_resource type="Script" path="res://TaskManager.gd" id="1_u5mwm"]
+[ext_resource type="AudioStream" uid="uid://c76h15hnnf7rv" path="res://Audio/task_arrival.wav" id="2_tagrk"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fbsqm"]
+streams_count = 1
+stream_0/stream = ExtResource("2_tagrk")
+stream_0/weight = 1.0
 
 [node name="TaskManager" type="Node"]
 script = ExtResource("1_u5mwm")
+
+[node name="TaskArrivalPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_fbsqm")

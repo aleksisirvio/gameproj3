@@ -38,31 +38,32 @@ texture = ExtResource("1_a7p6m")
 centered = false
 
 [node name="Interior" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("3_fx55c")
 centered = false
 
 [node name="Cannon" parent="." instance=ExtResource("2_m4u3e")]
-position = Vector2(1598, 224)
+position = Vector2(1595, 216)
 scale = Vector2(0.75, 0.75)
 
 [node name="CannonBallRack" parent="." instance=ExtResource("3_rchnc")]
-position = Vector2(1389, 590)
+position = Vector2(1392, 579)
 scale = Vector2(0.75, 0.75)
 
 [node name="Treat" parent="." instance=ExtResource("1_fk7mu")]
 position = Vector2(835, 400)
 
 [node name="PoopBag" parent="." instance=ExtResource("5_jofpx")]
-position = Vector2(1191, 845)
+position = Vector2(1151, 845)
 
 [node name="TrashCan" parent="." instance=ExtResource("7_2ll8m")]
-position = Vector2(383, 775)
+position = Vector2(375, 762)
 
 [node name="FireExtinguisher" parent="." instance=ExtResource("20_6dbgj")]
-position = Vector2(1274, 572)
+position = Vector2(1275, 578)
 
 [node name="Walls" type="Node2D" parent="."]
+visible = false
+position = Vector2(0, -15)
 
 [node name="Ladder" parent="Walls" instance=ExtResource("7_hpbv6")]
 position = Vector2(595, 604)
@@ -242,5 +243,4 @@ position = Vector2(1067, 814)
 
 [node name="MainThemePlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_7241c")
-volume_db = -10.0
 script = ExtResource("16_siysq")
