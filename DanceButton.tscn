@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ig2u8tuj3kqw"]
+
+[ext_resource type="Texture2D" uid="uid://brv3iiav04vyi" path="res://Sprites/dance_hit.png" id="1_pe8pw"]
+[ext_resource type="Script" path="res://DanceButton.gd" id="1_yokjv"]
+[ext_resource type="Texture2D" uid="uid://biup7jp1rjuij" path="res://Sprites/dance_miss.png" id="2_1wgiq"]
+
+[node name="DanceButton" type="ParallaxBackground"]
+layer = 55
+script = ExtResource("1_yokjv")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+
+[node name="HitColor" type="Sprite2D" parent="."]
+texture = ExtResource("1_pe8pw")
+
+[node name="MissColor" type="Sprite2D" parent="."]
+texture = ExtResource("2_1wgiq")

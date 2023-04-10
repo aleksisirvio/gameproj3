@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cq11wv6f8ypf5"]
+[gd_scene load_steps=28 format=3 uid="uid://cq11wv6f8ypf5"]
 
 [ext_resource type="Texture2D" uid="uid://nraho32btluo" path="res://Sprites/background.png" id="1_a7p6m"]
 [ext_resource type="PackedScene" uid="uid://dcfjeie1d08o6" path="res://Treat.tscn" id="1_fk7mu"]
@@ -15,11 +15,15 @@
 [ext_resource type="PackedScene" uid="uid://y62yx1xh1flk" path="res://Ladder.tscn" id="7_hpbv6"]
 [ext_resource type="PackedScene" uid="uid://cm0u0qw5clpvk" path="res://UI.tscn" id="7_lv3di"]
 [ext_resource type="Texture2D" uid="uid://breyjnw74g65o" path="res://Sprites/wall.png" id="7_o06og"]
+[ext_resource type="PackedScene" uid="uid://q4j4m5nud8c7" path="res://MouseCatcher.tscn" id="10_8r8qh"]
 [ext_resource type="PackedScene" uid="uid://dyj1fsauioldy" path="res://CannonView.tscn" id="10_23dqy"]
+[ext_resource type="PackedScene" uid="uid://81g5wvgtk67j" path="res://Brush.tscn" id="11_b4qmi"]
 [ext_resource type="PackedScene" uid="uid://c6vf8jsttn0ti" path="res://Wall.tscn" id="11_rnxi1"]
+[ext_resource type="PackedScene" uid="uid://dkv7xftc581oa" path="res://DancePad.tscn" id="12_m1fxm"]
 [ext_resource type="PackedScene" uid="uid://dnqvd34satpg8" path="res://TaskManager.tscn" id="13_qxmpo"]
 [ext_resource type="AudioStream" uid="uid://cslll3n3q8qs4" path="res://Audio/spookybutler_hq.wav" id="15_7241c"]
 [ext_resource type="Script" path="res://MainThemePlayer.gd" id="16_siysq"]
+[ext_resource type="Texture2D" uid="uid://ifjwd3ptpibs" path="res://Sprites/black.png" id="20_3gr0j"]
 [ext_resource type="PackedScene" uid="uid://dbk3cou0b6s5n" path="res://FireExtinguisher.tscn" id="20_6dbgj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vb1li"]
@@ -56,10 +60,19 @@ position = Vector2(835, 400)
 position = Vector2(1151, 845)
 
 [node name="TrashCan" parent="." instance=ExtResource("7_2ll8m")]
-position = Vector2(375, 762)
+position = Vector2(427, 763)
 
 [node name="FireExtinguisher" parent="." instance=ExtResource("20_6dbgj")]
 position = Vector2(1275, 578)
+
+[node name="MouseCatcher" parent="." instance=ExtResource("10_8r8qh")]
+position = Vector2(1083, 292)
+
+[node name="Brush" parent="." instance=ExtResource("11_b4qmi")]
+position = Vector2(296, 749)
+
+[node name="DancePad" parent="." instance=ExtResource("12_m1fxm")]
+position = Vector2(862, 930)
 
 [node name="Walls" type="Node2D" parent="."]
 visible = false
@@ -227,13 +240,20 @@ scale = Vector2(2, 2.7)
 position = Vector2(1079, 592)
 
 [node name="DogJumpLauncherRight" parent="." instance=ExtResource("4_skfc8")]
-position = Vector2(510, 800)
+position = Vector2(152, 832)
 
 [node name="DogJumpLauncherLeft" parent="." instance=ExtResource("4_6ctwu")]
 position = Vector2(151, 798)
 
 [node name="Player" parent="." instance=ExtResource("1_quucb")]
 position = Vector2(1067, 814)
+
+[node name="Black" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-20, -20)
+scale = Vector2(196, 112)
+texture = ExtResource("20_3gr0j")
+centered = false
 
 [node name="UI" parent="." instance=ExtResource("7_lv3di")]
 

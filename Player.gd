@@ -10,8 +10,14 @@ Collision bit info:
 	5: Dog jump launcher
 	6: Platforms
 	7: Ladders
+	8: Mouse
 """
 
+@onready var footstep_player = $FootstepPlayer
+@onready var jump_player = $JumpPlayer
+@onready var land_player = $LandPlayer
+@onready var interact_success_player = $InteractSuccessPlayer
+@onready var interact_fail_player = $InteractFailPlayer
 
 enum State { move, climb, pause }
 var state : State = State.move
@@ -24,6 +30,7 @@ const grav 		: float = 2000
 var hmove : int = 0
 var vmove : int = 0
 var on_floor : bool = false
+var prev_on_floor : bool = false
 
 #var check_target = null	# Who player interacts with upon pressing "interact" key
 var targets : Array = []	# All interactables player is colliding with
@@ -70,7 +77,13 @@ func _process(delta):
 	# Interacting with interactables
 	if Input.is_action_just_pressed("interact"):
 		for target in targets:
-			target.interact(self)
+			var success = target.interact(self)
+			if success:
+				interact_success_player.play()
+			else:
+				interact_fail_player.play()
+	
+	prev_on_floor = on_floor
 	
 
 func add_target(target):
@@ -98,6 +111,7 @@ func move():
 	# Jumping
 	if Input.is_action_pressed("jump") and on_floor:
 		velocity.y = -jump_spd
+		jump_player.play()
 	
 	# Falling through platforms
 	if Input.is_action_pressed("down"):
@@ -109,6 +123,9 @@ func move():
 	if ladder:
 		if Input.is_action_pressed("up") or Input.is_action_pressed("down"):
 			init_climb()
+			
+	if on_floor and !prev_on_floor:
+		land_player.play()
 	
 
 func init_climb():

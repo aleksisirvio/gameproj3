@@ -1,11 +1,42 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccijo1qgc02mv"]
+[gd_scene load_steps=14 format=3 uid="uid://ccijo1qgc02mv"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_2b3g2"]
 [ext_resource type="Texture2D" uid="uid://comyfmgxqis8u" path="res://Sprites/player.png" id="1_yq4hm"]
 [ext_resource type="Texture2D" uid="uid://dkwxh7eh82efu" path="res://Sprites/butler_pixel.png" id="3_te1k4"]
+[ext_resource type="AudioStream" uid="uid://dxrfm3s7ypf0j" path="res://Audio/ButlerLand.mp3" id="4_2m1ew"]
+[ext_resource type="AudioStream" uid="uid://bd86pt822hsks" path="res://Audio/FootstepsSFX.mp3" id="4_oiaa7"]
+[ext_resource type="AudioStream" uid="uid://b6040gcrbrs6r" path="res://Audio/ButlerJump.mp3" id="5_0cg7b"]
+[ext_resource type="AudioStream" uid="uid://bog3v44skbtfp" path="res://Audio/InteractionSuccess.mp3" id="7_8m67p"]
+[ext_resource type="AudioStream" uid="uid://b06ayjsk58vf8" path="res://Audio/InteractionFail.mp3" id="8_2moc2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pgr0c"]
 size = Vector2(44, 60)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_oyxfp"]
+streams_count = 1
+random_pitch = 1.2
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("4_oiaa7")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i0dy4"]
+streams_count = 1
+random_pitch = 1.2
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("5_0cg7b")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_54lii"]
+streams_count = 1
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("7_8m67p")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_v8imk"]
+streams_count = 1
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("8_2moc2")
+stream_0/weight = 1.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 108
@@ -25,3 +56,19 @@ texture = ExtResource("3_te1k4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.8, 0.8)
 shape = SubResource("RectangleShape2D_pgr0c")
+
+[node name="FootstepPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_oyxfp")
+
+[node name="JumpPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_i0dy4")
+volume_db = -15.0
+
+[node name="LandPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2m1ew")
+
+[node name="InteractSuccessPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_54lii")
+
+[node name="InteractFailPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_v8imk")

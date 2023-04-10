@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnqvd34satpg8"]
+[gd_scene load_steps=8 format=3 uid="uid://dnqvd34satpg8"]
 
 [ext_resource type="Script" path="res://TaskManager.gd" id="1_u5mwm"]
 [ext_resource type="AudioStream" uid="uid://c76h15hnnf7rv" path="res://Audio/task_arrival.wav" id="2_tagrk"]
+[ext_resource type="AudioStream" uid="uid://5rjxbxldb3ck" path="res://Audio/DogPoop.mp3" id="3_dl8hi"]
+[ext_resource type="AudioStream" uid="uid://22aogq8sipq7" path="res://Audio/TaskComplete.mp3" id="4_yjv15"]
+[ext_resource type="AudioStream" uid="uid://d00kjolformdm" path="res://Audio/TaskFail.mp3" id="5_i6ym0"]
+[ext_resource type="AudioStream" uid="uid://kmfbuaibc6en" path="res://Audio/10SecondsLeft.mp3" id="6_qbw5y"]
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fbsqm"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_05yjj"]
 streams_count = 1
+random_volume_offset_db = 0.0
 stream_0/stream = ExtResource("2_tagrk")
 stream_0/weight = 1.0
 
@@ -12,4 +17,19 @@ stream_0/weight = 1.0
 script = ExtResource("1_u5mwm")
 
 [node name="TaskArrivalPlayer" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_fbsqm")
+stream = SubResource("AudioStreamRandomizer_05yjj")
+
+[node name="PoopPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dl8hi")
+volume_db = 15.0
+
+[node name="TaskSuccessPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_yjv15")
+volume_db = 10.0
+
+[node name="TaskFailPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_i6ym0")
+
+[node name="WarningPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_qbw5y")
+volume_db = 5.0

@@ -27,8 +27,9 @@ func _on_body_exited(body):
 
 
 func interact(interacter):
+	var ret = false
 	if cd > 0:
-		return
+		return false
 	cd = max_cd
 	var text_inst = floating_text.instantiate()
 	if interacter.tool == "Bag":
@@ -36,6 +37,7 @@ func interact(interacter):
 		ui.set_tool(title)
 		text_inst.set_text("+ " + title)
 		queue_free()
+		ret = true
 	elif interacter.tool == "":
 		text_inst.set_text("Need bag!")
 	else:
@@ -43,3 +45,4 @@ func interact(interacter):
 	text_inst.position.x = interacter.position.x
 	text_inst.position.y = interacter.position.y - 125
 	get_parent().add_child(text_inst)
+	return ret

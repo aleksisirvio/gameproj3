@@ -79,9 +79,11 @@ func _process(delta):
 	if hits >= hits_to_win:
 		dog.pass_task_at(task_index)
 		player.init_move()
+		get_parent().toggle_black()
 		queue_free()
 	
 	# Exit out of the minigame
 	if Input.is_action_just_pressed("interact"):
 		player.init_move()
+		get_parent().toggle_black()
 		queue_free()

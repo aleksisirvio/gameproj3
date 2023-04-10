@@ -1,10 +1,14 @@
 extends Node2D
 
+@onready var black = $Black
 
 @onready var interactables : Array = [
 	$CannonBallRack,
 	$Treat,
 	$PoopBag,
+	$MouseCatcher,
+	$Brush,
+	$DancePad
 ]
 
 var max_shake_timer : float = 60
@@ -27,3 +31,10 @@ func shake():
 func set_random_interactable_on_fire():
 	var rand = randi_range(0, interactables.size() - 1)
 	interactables[rand].get_node("Interactable").set_on_fire()
+
+
+func toggle_black():
+	if black.modulate.a < .25:
+		black.modulate.a = .5
+	else:
+		black.modulate.a = 0

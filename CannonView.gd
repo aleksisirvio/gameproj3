@@ -4,6 +4,9 @@ extends Node
 @onready var bg = $Background
 @onready var scope = $Scope
 @onready var controller = $CannonController
+@onready var shoot_player = $ShootPlayer
+@onready var hit_player = $HitPlayer
+@onready var miss_player = $MissPlayer
 
 
 func _ready():
@@ -34,3 +37,15 @@ func set_enemy_fortress(which):
 
 func is_active():
 	return controller.active
+
+
+func play_hit():
+	hit_player.play()
+	
+	
+func play_miss():
+	miss_player.play()
+	
+	
+func play_shoot():
+	shoot_player.play()

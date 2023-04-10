@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://clv0p3s8pbfd3"]
+[gd_scene load_steps=6 format=3 uid="uid://clv0p3s8pbfd3"]
 
 [ext_resource type="Script" path="res://CannonBall.gd" id="1_ji0lb"]
 [ext_resource type="Texture2D" uid="uid://b0xks37pq751" path="res://Sprites/cannon_ball.png" id="2_rn6ls"]
+[ext_resource type="AudioStream" uid="uid://cqbhbq3otp1fu" path="res://Audio/CannonShootSFX.mp3" id="3_oqffx"]
+[ext_resource type="AudioStream" uid="uid://civw0d0n51nh3" path="res://Audio/CannonBallHit.mp3" id="4_auoo0"]
+[ext_resource type="AudioStream" uid="uid://bxuw3w8y4smdj" path="res://Audio/CannonBallMiss.mp3" id="5_jfn2n"]
 
 [node name="CannonBall" type="ParallaxBackground"]
 layer = 60
@@ -10,3 +13,12 @@ script = ExtResource("1_ji0lb")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
 texture = ExtResource("2_rn6ls")
+
+[node name="ShootPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_oqffx")
+
+[node name="HitPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_auoo0")
+
+[node name="MissPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_jfn2n")

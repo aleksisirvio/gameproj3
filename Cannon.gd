@@ -32,3 +32,5 @@ func interact(_interacter):
 	cannon_view.activate()
 	
 	Input.action_release("interact")
+	
+	return true

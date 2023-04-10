@@ -27,12 +27,12 @@ func _on_body_exited(body):
 
 
 func interact(interacter):
+	var ret = true
 	if cd > 0:
-		return
+		return false
 	cd = max_cd
 	if interactable.on_fire:
-		interactable.interact_on_fire(interacter)
-		return
+		return interactable.interact_on_fire(interacter)
 	var text_inst = floating_text.instantiate()
 	if interacter.tool == title:
 		interacter.tool = ""
@@ -44,6 +44,8 @@ func interact(interacter):
 		text_inst.set_text("+ " + title)
 	else:
 		text_inst.set_text("Holding " + interacter.tool)
+		ret = false
 	text_inst.position.x = interacter.position.x
 	text_inst.position.y = interacter.position.y - 125
 	get_parent().add_child(text_inst)
+	return ret

@@ -34,13 +34,16 @@ func set_on_fire():
 
 
 func interact_on_fire(interacter):
+	var ret = false
 	var text_inst = floating_text.instantiate()
 	if interacter.tool == "Fire Extinguisher":
 		text_inst.set_text("Fire has been put out!")
 		get_parent().get_node("Fire").queue_free()
 		on_fire = false
+		ret = true
 	else:
 		text_inst.set_text("Need Fire Extinguisher!")
 	text_inst.position.x = interacter.position.x
 	text_inst.position.y = interacter.position.y - 125
 	get_parent().get_parent().add_child(text_inst)
+	return ret

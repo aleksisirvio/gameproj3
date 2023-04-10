@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgcc806kkxgkq"]
+
+[ext_resource type="Script" path="res://BrushingGame.gd" id="1_ogrnq"]
+[ext_resource type="Texture2D" uid="uid://dhghqokqfvpal" path="res://Sprites/brushing_game.png" id="2_iud3i"]
+[ext_resource type="Texture2D" uid="uid://b7oni07b87rfn" path="res://Sprites/brushing_game_hit.png" id="3_efg4c"]
+[ext_resource type="FontFile" uid="uid://bb57ggvwo4ffg" path="res://Fonts/berlin_sans_fb.TTF" id="7_373r3"]
+
+[node name="BrushingGame" type="ParallaxBackground"]
+layer = 50
+script = ExtResource("1_ogrnq")
+
+[node name="Bg" type="Sprite2D" parent="."]
+texture = ExtResource("2_iud3i")
+
+[node name="HitColor" type="Sprite2D" parent="."]
+texture = ExtResource("3_efg4c")
+
+[node name="HitsLabel" type="Label" parent="."]
+offset_left = -79.0
+offset_top = 75.0
+offset_right = 79.0
+offset_bottom = 167.0
+theme_override_fonts/font = ExtResource("7_373r3")
+theme_override_font_sizes/font_size = 80
+text = "0/20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TapLabel" type="Label" parent="."]
+offset_left = -79.0
+offset_top = -169.0
+offset_right = 79.0
+offset_bottom = -77.0
+theme_override_fonts/font = ExtResource("7_373r3")
+theme_override_font_sizes/font_size = 80
+text = "Tap!"
+horizontal_alignment = 1
+vertical_alignment = 1

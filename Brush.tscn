@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://1id6ffja8c7s" path="res://Sprites/brush.png" id="2_2uo0k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1pjsl"]
-size = Vector2(26, 26)
+size = Vector2(50, 50)
 
 [node name="Brush" type="Area2D"]
 collision_layer = 8
@@ -14,6 +14,7 @@ script = ExtResource("1_033mx")
 [node name="Interactable" parent="." instance=ExtResource("1_ow827")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("2_2uo0k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

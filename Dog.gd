@@ -24,6 +24,7 @@ var task_cd			: float = 1
 @onready var check = preload("res://Check.tscn")
 @onready var floating_text = preload("res://FloatingText.tscn")
 @onready var petting_game = preload("res://PettingGame.tscn")
+@onready var brushing_game = preload("res://BrushingGame.tscn")
 
 var task_inst = null
 var wants : Array = [] # What does the dog want, e.g., "brush", "wash", "pet"...
@@ -84,9 +85,11 @@ func interact(interacter):
 		match want:
 			"Brush":
 				if interacter.tool == want:
-					interacter.tool = ""
-					ui.set_tool("-")
-					success = true
+					player.init_pause()
+					get_parent().toggle_black()
+					var brushing_game_inst = brushing_game.instantiate()
+					brushing_game_inst.task_index = i
+					get_parent().add_child(brushing_game_inst)
 			"Treat":
 				if interacter.tool == want:
 					interacter.tool = ""
@@ -100,6 +103,7 @@ func interact(interacter):
 			"Pet":
 				if interacter.tool == "":
 					player.init_pause()
+					get_parent().toggle_black()
 					var petting_game_inst = petting_game.instantiate()
 					petting_game_inst.task_index = i
 					get_parent().add_child(petting_game_inst)
@@ -110,8 +114,8 @@ func interact(interacter):
 			task_inst = null
 			"""
 			task_cd = max_task_cd
-			#_on_mask_body_exited(interacter)
-			break
+			return true
+	return false
 			
 			
 func pass_task_at(index):

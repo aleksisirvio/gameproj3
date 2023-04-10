@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ilpwce2uw2ut"]
+
+[ext_resource type="Script" path="res://DanceGame.gd" id="1_41ohg"]
+
+[node name="DanceGame" type="ParallaxBackground"]
+layer = 50
+script = ExtResource("1_41ohg")

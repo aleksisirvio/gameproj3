@@ -33,6 +33,8 @@ func shoot(who_created, target_pos, what_type):
 	# Get rid of poop cleaning task if shooting poop
 	if type == "Bag Filled With Poop":
 		get_parent().get_parent().get_node("TaskManager").pass_task(3)
+	
+	get_parent().play_shoot()
 
 
 func _process(delta):
@@ -83,11 +85,17 @@ func _process(delta):
 					target.take_damage(100)
 				else:
 					target.take_damage(1)
+				get_parent().play_hit()
+			else:
+				get_parent().play_miss()
 			
 			print("")
 			print("Ball bb: ", r1)
 			print("Fortress bb: ", r2)
 			print("Collision: ", collision)
+		
+		else:
+			get_parent().play_miss()
 		
 		creator.cannon_ball = null
 		queue_free()
