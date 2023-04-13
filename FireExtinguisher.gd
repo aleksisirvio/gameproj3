@@ -33,11 +33,11 @@ func interact(interacter):
 	cd = max_cd
 	var text_inst = floating_text.instantiate()
 	if interacter.tool == title:
-		interacter.tool = ""
+		interacter.set_tool("")
 		ui.set_tool("-")
 		text_inst.set_text("- " + title)
 	elif interacter.tool == "":
-		interacter.tool = title
+		interacter.set_tool(title)
 		ui.set_tool(title)
 		text_inst.set_text("+ " + title)
 	else:

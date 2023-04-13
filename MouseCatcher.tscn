@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://MouseCatcher.gd" id="1_nu2np"]
 [ext_resource type="PackedScene" uid="uid://r63kj61hl176" path="res://Interactable.tscn" id="2_fw8bw"]
-[ext_resource type="Texture2D" uid="uid://b4hs38dtuy0bw" path="res://Sprites/mouse_catcher.png" id="3_dnovw"]
+[ext_resource type="Texture2D" uid="uid://6qm5exwsexhg" path="res://Sprites/Interactables/mouse_catcher.png" id="3_feani"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1pjsl"]
 size = Vector2(50, 50)
@@ -15,7 +15,8 @@ script = ExtResource("1_nu2np")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("3_dnovw")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_feani")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1pjsl")

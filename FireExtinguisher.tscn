@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://FireExtinguisher.gd" id="1_h8qo8"]
 [ext_resource type="PackedScene" uid="uid://r63kj61hl176" path="res://Interactable.tscn" id="2_qs2x4"]
-[ext_resource type="Texture2D" uid="uid://crb33cehkm4kc" path="res://Sprites/fire_extinguisher.png" id="3_vm8so"]
+[ext_resource type="Texture2D" uid="uid://cyvax0t4r21n" path="res://Sprites/Interactables/fire_extinguisher.png" id="3_uwrmb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1pjsl"]
-size = Vector2(50, 50)
+size = Vector2(50, 68)
 
 [node name="FireExtinguisher" type="Area2D"]
 collision_layer = 8
@@ -15,9 +15,11 @@ script = ExtResource("1_h8qo8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("3_vm8so")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_uwrmb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_1pjsl")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

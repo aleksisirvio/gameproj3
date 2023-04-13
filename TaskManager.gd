@@ -17,6 +17,18 @@ extends Node
 
 enum Task { treat, pet, enemy_fortress, poop, mouse, brush, dance, sing }
 const task_durations : Array = [1800, 2500, 4200, 2500, 2500, 2500, 2500, 2500]
+const task_icons : Array = [
+	preload("res://Sprites/Icons/give dog a treat.png"),
+	preload("res://Sprites/Icons/pat the dog.png"),
+	preload("res://Sprites/Icons/Attack.png"),
+	preload("res://Sprites/Icons/clean up dog poop.png"),
+	preload("res://Sprites/Icons/catch a mouse.png"),
+	preload("res://Sprites/Icons/grooming.png"),
+	preload("res://Sprites/Icons/dance.png"),
+	preload("res://Sprites/Icons/karaoke.png")
+]
+const task_icon_scales : Array = [1.2, 1.5, 1, 1, 1, 1.2, 1, .75]
+const task_rewards : Array = [500, 700, 2000, 900, 900, 800, 750, 750]
 
 const max_tasks : int = 3
 var current_tasks : int = 0
@@ -25,6 +37,8 @@ var tasks : Array = []
 
 const max_assign_timer : float = 600
 var assign_timer : float = 180
+
+var last_assigned : int = -1
 
 const failures_to_game_over : int = 5
 var failures : int = 0
@@ -52,15 +66,16 @@ func _process(delta):
 		var rand = -1
 		while !valid:
 			rand = randi() % (task_durations.size())
-			if has_task(rand):
+			if has_task(rand) or rand == last_assigned:
 				continue
 			"""
 			if current_tasks == 0:
-				rand = Task.poop
+				rand = Task.enemy_fortress
 			#if current_tasks == 1:
 			#	rand = Task.poop
 			"""
 			tasks[free_pos] = rand
+			last_assigned = rand
 			valid = true
 			
 		current_tasks += 1
@@ -113,7 +128,7 @@ func _process(delta):
 				get_parent().add_child(mouse_inst)
 				
 			Task.brush:
-				desc = "Brush the dog"
+				desc = "Groom the dog"
 				dog.wants.append("Brush")
 				dog.wants_pos.append(free_pos)
 			
@@ -121,9 +136,9 @@ func _process(delta):
 				desc = "Dance for the dog"
 			
 			Task.sing:
-				desc = "Grab the mic and sing for the dog"
+				desc = "Sing for the dog"
 				
-		ui.add_task(desc, task_durations[rand], free_pos)
+		ui.add_task(desc, task_durations[rand], task_icons[rand], task_icon_scales[rand], free_pos)
 
 
 func has_task(which):
@@ -134,6 +149,7 @@ func has_task(which):
 
 
 func pass_task_at(pos):
+	ui.add_money(task_rewards[tasks[pos]])
 	ui.increment_task_count()
 	ui.del_task(pos)
 	current_tasks -= 1
@@ -154,6 +170,21 @@ func fail_task(pos):
 	if tasks[pos] == Task.enemy_fortress:
 		if cannon_view.has_node("EnemyFortress"):
 			cannon_view.get_node("EnemyFortress").remove()
+	elif tasks[pos] == Task.mouse:
+		if get_parent().has_node("Mouse"):
+			get_parent().get_node("Mouse").queue_free()
+	elif tasks[pos] == Task.pet:
+		if get_parent().has_node("PettingGame"):
+			get_parent().get_node("PettingGame").exit()
+	elif tasks[pos] == Task.brush:
+		if get_parent().has_node("BrushingGame"):
+			get_parent().get_node("BrushingGame").exit()
+	elif tasks[pos] == Task.dance:
+		if get_parent().has_node("DanceGame"):
+			get_parent().get_node("DanceGame").exit()
+	elif tasks[pos] == Task.sing:
+		if get_parent().has_node("SingingGame"):
+			get_parent().get_node("SingingGame").exit()
 	tasks[pos] = null
 	task_fail_player.play()
 	failures += 1

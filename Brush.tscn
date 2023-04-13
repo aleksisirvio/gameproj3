@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Brush.gd" id="1_033mx"]
 [ext_resource type="PackedScene" uid="uid://r63kj61hl176" path="res://Interactable.tscn" id="1_ow827"]
-[ext_resource type="Texture2D" uid="uid://1id6ffja8c7s" path="res://Sprites/brush.png" id="2_2uo0k"]
+[ext_resource type="Texture2D" uid="uid://ut1m7ad4d54j" path="res://Sprites/Interactables/brush.png" id="3_j34lj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1pjsl"]
 size = Vector2(50, 50)
@@ -15,7 +15,8 @@ script = ExtResource("1_033mx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_2uo0k")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_j34lj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1pjsl")

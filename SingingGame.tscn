@@ -1,38 +1,42 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjt8vqjnxo5n8"]
+[gd_scene load_steps=6 format=3 uid="uid://cjt8vqjnxo5n8"]
 
 [ext_resource type="Script" path="res://SingingGame.gd" id="1_dk13m"]
-[ext_resource type="Texture2D" uid="uid://dhghqokqfvpal" path="res://Sprites/brushing_game.png" id="2_vbufg"]
-[ext_resource type="Texture2D" uid="uid://b7oni07b87rfn" path="res://Sprites/brushing_game_hit.png" id="3_011tb"]
+[ext_resource type="Texture2D" uid="uid://su56obxbj10u" path="res://Sprites/sing_bar.png" id="2_d6p4j"]
+[ext_resource type="Texture2D" uid="uid://q0clf4d7as0r" path="res://Sprites/sing_cursor.png" id="3_hqo8c"]
+[ext_resource type="Texture2D" uid="uid://cafb8u2g8ejmn" path="res://Sprites/sing_note.png" id="4_gg71f"]
 [ext_resource type="FontFile" uid="uid://bb57ggvwo4ffg" path="res://Fonts/berlin_sans_fb.TTF" id="4_h1kya"]
 
 [node name="SingingGame" type="ParallaxBackground"]
 layer = 50
 script = ExtResource("1_dk13m")
 
-[node name="Bg" type="Sprite2D" parent="."]
-texture = ExtResource("2_vbufg")
+[node name="Bar" type="Sprite2D" parent="."]
+texture = ExtResource("2_d6p4j")
 
-[node name="HitColor" type="Sprite2D" parent="."]
-texture = ExtResource("3_011tb")
+[node name="Cursor" type="Sprite2D" parent="."]
+texture = ExtResource("3_hqo8c")
 
-[node name="HitsLabel" type="Label" parent="."]
-offset_left = -79.0
-offset_top = 75.0
-offset_right = 79.0
-offset_bottom = 167.0
+[node name="Note" type="Sprite2D" parent="."]
+texture = ExtResource("4_gg71f")
+
+[node name="ProgressLabel" type="Label" parent="."]
+offset_left = -93.0
+offset_top = 310.0
+offset_right = 96.0
+offset_bottom = 402.0
 theme_override_fonts/font = ExtResource("4_h1kya")
 theme_override_font_sizes/font_size = 80
-text = "0/20"
+text = "0/100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TapLabel" type="Label" parent="."]
-offset_left = -79.0
-offset_top = -169.0
-offset_right = 79.0
-offset_bottom = -77.0
+[node name="GuideLabel" type="Label" parent="."]
+offset_left = -402.0
+offset_top = -399.0
+offset_right = 404.0
+offset_bottom = -307.0
 theme_override_fonts/font = ExtResource("4_h1kya")
-theme_override_font_sizes/font_size = 80
-text = "Tap!"
+theme_override_font_sizes/font_size = 60
+text = "Hold 'Up' to increase pitch"
 horizontal_alignment = 1
 vertical_alignment = 1

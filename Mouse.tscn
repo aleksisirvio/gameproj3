@@ -24,7 +24,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iri83"]
-size = Vector2(65, 26)
+size = Vector2(78, 32)
 
 [node name="Mouse" type="CharacterBody2D"]
 collision_layer = 128
@@ -35,10 +35,9 @@ script = ExtResource("1_ovb0n")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_aqfx5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 texture_filter = 1
-position = Vector2(2.5, 0)
+position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_iri83")

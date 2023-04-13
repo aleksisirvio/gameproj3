@@ -19,6 +19,8 @@ stream = ExtResource("3_oqffx")
 
 [node name="HitPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_auoo0")
+volume_db = 5.0
 
 [node name="MissPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_jfn2n")
+volume_db = 3.0

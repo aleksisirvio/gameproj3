@@ -1,13 +1,53 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1pvf4ipgrfg2"]
+[gd_scene load_steps=5 format=3 uid="uid://c1pvf4ipgrfg2"]
 
+[ext_resource type="Texture2D" uid="uid://bwo1y4d8xgl7y" path="res://Sprites/task_box.png" id="1_e46qv"]
 [ext_resource type="FontFile" uid="uid://bb57ggvwo4ffg" path="res://Fonts/berlin_sans_fb.TTF" id="1_t7wbf"]
+[ext_resource type="Texture2D" uid="uid://dkm7ssh0ycqhs" path="res://Sprites/task_bar.png" id="2_0il86"]
 [ext_resource type="Script" path="res://TaskText.gd" id="2_7s1oq"]
 
-[node name="Task" type="Label"]
-offset_right = 284.0
-offset_bottom = 59.0
+[node name="Task" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_7s1oq")
+
+[node name="Box" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_e46qv")
+centered = false
+
+[node name="Bar" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(3, 198)
+texture = ExtResource("2_0il86")
+centered = false
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(170, 120)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 7.0
+offset_right = 333.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_t7wbf")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 30
 text = "TASK ERROR"
 vertical_alignment = 1
-script = ExtResource("2_7s1oq")
+
+[node name="Timer" type="Label" parent="."]
+layout_mode = 0
+offset_left = 267.0
+offset_top = 178.0
+offset_right = 337.0
+offset_bottom = 248.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_t7wbf")
+theme_override_font_sizes/font_size = 50
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1

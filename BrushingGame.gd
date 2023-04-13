@@ -31,12 +31,11 @@ func _process(delta):
 		hits += 1
 		hits_label.text = str(hits) + "/" + str(hits_to_win)
 		hit_color.modulate.a = 1
+		get_parent().play_success()
 	
 	if hits >= hits_to_win:
 		dog.pass_task_at(task_index)
-		player.init_move()
-		get_parent().toggle_black()
-		queue_free()
+		exit()
 	
 	# Exit out of the minigame
 	"""
@@ -44,3 +43,9 @@ func _process(delta):
 		player.init_move()
 		queue_free()
 	"""
+
+
+func exit():
+	player.init_move()
+	get_parent().toggle_black()
+	queue_free()

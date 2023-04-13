@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://DancePad.gd" id="1_m7ncg"]
 [ext_resource type="PackedScene" uid="uid://r63kj61hl176" path="res://Interactable.tscn" id="2_0hy4j"]
-[ext_resource type="Texture2D" uid="uid://cp7huga5f3uxx" path="res://Sprites/dance_pad.png" id="3_xbh0o"]
+[ext_resource type="Texture2D" uid="uid://ctaam6gwudtly" path="res://Sprites/Interactables/dance_pad.png" id="3_nkfq2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1pjsl"]
-size = Vector2(100, 30)
+size = Vector2(76, 75)
 
 [node name="DancePad" type="Area2D"]
 collision_layer = 8
@@ -15,9 +15,11 @@ script = ExtResource("1_m7ncg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("3_xbh0o")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_nkfq2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_1pjsl")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -36,18 +36,18 @@ func interact(interacter):
 		return interactable.interact_on_fire(interacter)
 	var text_inst = floating_text.instantiate()
 	if interacter.tool == "Bag Filled With Poop":
-		interacter.tool = ""
+		interacter.set_tool("")
 		ui.set_tool("")
 		text_inst.set_text("- Bag Filled With Poop")
 		task_manager.pass_task(3)
 	elif interacter.tool == "Caught Mouse":
-		interacter.tool = ""
+		interacter.set_tool("")
 		ui.set_tool("")
 		text_inst.set_text("- Caught Mouse")
 		task_manager.pass_task(4)
 	elif interacter.tool == "Treat" or interacter.tool == "Bag" or interacter.tool == "Cannon Ball":
 		var txt = "- " + interacter.tool
-		interacter.tool = ""
+		interacter.set_tool("")
 		ui.set_tool("")
 		text_inst.set_text(txt)
 	else:

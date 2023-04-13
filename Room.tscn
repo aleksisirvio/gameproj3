@@ -1,14 +1,15 @@
-[gd_scene load_steps=28 format=3 uid="uid://cq11wv6f8ypf5"]
+[gd_scene load_steps=36 format=3 uid="uid://cq11wv6f8ypf5"]
 
-[ext_resource type="Texture2D" uid="uid://nraho32btluo" path="res://Sprites/background.png" id="1_a7p6m"]
 [ext_resource type="PackedScene" uid="uid://dcfjeie1d08o6" path="res://Treat.tscn" id="1_fk7mu"]
 [ext_resource type="PackedScene" uid="uid://ccijo1qgc02mv" path="res://Player.tscn" id="1_quucb"]
 [ext_resource type="Script" path="res://Room.gd" id="1_v6j6y"]
 [ext_resource type="PackedScene" uid="uid://evwffrvxmtur" path="res://Dog.tscn" id="2_0yfpg"]
 [ext_resource type="PackedScene" uid="uid://crhd40nvr8uu5" path="res://Cannon.tscn" id="2_m4u3e"]
-[ext_resource type="Texture2D" uid="uid://beyd0yi0usoer" path="res://Sprites/interior.png" id="3_fx55c"]
+[ext_resource type="Texture2D" uid="uid://c7tqn0vko6ji2" path="res://Sprites/Backgrounds/sky.png" id="2_n5i37"]
+[ext_resource type="Texture2D" uid="uid://bwewb6cmw8d56" path="res://Sprites/Backgrounds/hills.png" id="3_ajnt7"]
 [ext_resource type="PackedScene" uid="uid://hfhp7e60qlbi" path="res://CannonBallRack.tscn" id="3_rchnc"]
 [ext_resource type="PackedScene" uid="uid://ckf72abdcwatc" path="res://DogJumpLauncherLeft.tscn" id="4_6ctwu"]
+[ext_resource type="Texture2D" uid="uid://cmtktmayge2q7" path="res://Sprites/Backgrounds/interior.png" id="4_cj5df"]
 [ext_resource type="PackedScene" uid="uid://ci4gb2hu1mqhx" path="res://DogJumpLauncherRight.tscn" id="4_skfc8"]
 [ext_resource type="PackedScene" uid="uid://dawh51r2vomp5" path="res://PoopBag.tscn" id="5_jofpx"]
 [ext_resource type="PackedScene" uid="uid://c1hec3q0gt7se" path="res://TrashCan.tscn" id="7_2ll8m"]
@@ -21,76 +22,107 @@
 [ext_resource type="PackedScene" uid="uid://c6vf8jsttn0ti" path="res://Wall.tscn" id="11_rnxi1"]
 [ext_resource type="PackedScene" uid="uid://dkv7xftc581oa" path="res://DancePad.tscn" id="12_m1fxm"]
 [ext_resource type="PackedScene" uid="uid://dnqvd34satpg8" path="res://TaskManager.tscn" id="13_qxmpo"]
+[ext_resource type="PackedScene" uid="uid://ctd8g7a3gy756" path="res://Microphone.tscn" id="13_whyww"]
 [ext_resource type="AudioStream" uid="uid://cslll3n3q8qs4" path="res://Audio/spookybutler_hq.wav" id="15_7241c"]
 [ext_resource type="Script" path="res://MainThemePlayer.gd" id="16_siysq"]
 [ext_resource type="Texture2D" uid="uid://ifjwd3ptpibs" path="res://Sprites/black.png" id="20_3gr0j"]
 [ext_resource type="PackedScene" uid="uid://dbk3cou0b6s5n" path="res://FireExtinguisher.tscn" id="20_6dbgj"]
+[ext_resource type="Texture2D" uid="uid://qj3pqltibxc8" path="res://Sprites/Backgrounds/fortress_outline.png" id="22_yggtl"]
+[ext_resource type="Texture2D" uid="uid://cjgeny1nue8go" path="res://Sprites/Backgrounds/light.png" id="23_1ms4u"]
+[ext_resource type="AudioStream" uid="uid://bog3v44skbtfp" path="res://Audio/InteractionSuccess.mp3" id="27_434gp"]
+[ext_resource type="AudioStream" uid="uid://b06ayjsk58vf8" path="res://Audio/InteractionFail.mp3" id="28_m6j7t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vb1li"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvbwn"]
 size = Vector2(247.235, 7.34216)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kjho1"]
+streams_count = 1
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("27_434gp")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ql4r3"]
+streams_count = 1
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("28_m6j7t")
+stream_0/weight = 1.0
+
 [node name="Room" type="Node2D"]
 z_as_relative = false
 script = ExtResource("1_v6j6y")
 
-[node name="Gray" type="Sprite2D" parent="."]
+[node name="Sky" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Sky"]
+motion_mirroring = Vector2(1950, 0)
+
+[node name="Sprite" type="Sprite2D" parent="Sky/ParallaxLayer"]
 position = Vector2(-20, -20)
-scale = Vector2(196, 112)
-texture = ExtResource("1_a7p6m")
+scale = Vector2(1.02, 1.04)
+texture = ExtResource("2_n5i37")
+centered = false
+
+[node name="Hills" type="Sprite2D" parent="."]
+texture_filter = 2
+position = Vector2(-20, -20)
+scale = Vector2(1.05, 1.05)
+texture = ExtResource("3_ajnt7")
 centered = false
 
 [node name="Interior" type="Sprite2D" parent="."]
-texture = ExtResource("3_fx55c")
+position = Vector2(88, 0)
+texture = ExtResource("4_cj5df")
 centered = false
 
 [node name="Cannon" parent="." instance=ExtResource("2_m4u3e")]
-position = Vector2(1595, 216)
-scale = Vector2(0.75, 0.75)
+position = Vector2(1673, 179)
 
 [node name="CannonBallRack" parent="." instance=ExtResource("3_rchnc")]
-position = Vector2(1392, 579)
+position = Vector2(1488, 579)
 scale = Vector2(0.75, 0.75)
 
 [node name="Treat" parent="." instance=ExtResource("1_fk7mu")]
-position = Vector2(835, 400)
+position = Vector2(923, 363)
 
 [node name="PoopBag" parent="." instance=ExtResource("5_jofpx")]
-position = Vector2(1151, 845)
+position = Vector2(1231, 755)
 
 [node name="TrashCan" parent="." instance=ExtResource("7_2ll8m")]
-position = Vector2(427, 763)
+position = Vector2(515, 763)
 
 [node name="FireExtinguisher" parent="." instance=ExtResource("20_6dbgj")]
-position = Vector2(1275, 578)
+position = Vector2(1364, 498)
 
 [node name="MouseCatcher" parent="." instance=ExtResource("10_8r8qh")]
-position = Vector2(1083, 292)
+position = Vector2(1161, 259)
 
 [node name="Brush" parent="." instance=ExtResource("11_b4qmi")]
-position = Vector2(296, 749)
+position = Vector2(384, 742)
 
 [node name="DancePad" parent="." instance=ExtResource("12_m1fxm")]
-position = Vector2(862, 930)
+position = Vector2(950, 907)
+
+[node name="Microphone" parent="." instance=ExtResource("13_whyww")]
+position = Vector2(1304, 256)
 
 [node name="Walls" type="Node2D" parent="."]
 visible = false
-position = Vector2(0, -15)
+position = Vector2(88, -15)
 
 [node name="Ladder" parent="Walls" instance=ExtResource("7_hpbv6")]
 position = Vector2(595, 604)
 scale = Vector2(0.7, 0.7)
 
 [node name="Ladder2" parent="Walls" instance=ExtResource("7_hpbv6")]
-position = Vector2(1501, 387)
+position = Vector2(1497, 388)
 scale = Vector2(0.7, 0.7)
 
 [node name="Platform" type="StaticBody2D" parent="Walls"]
 position = Vector2(595, 513)
 scale = Vector2(0.5, 0.5)
 collision_layer = 32
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Platform"]
 scale = Vector2(10, 0.5)
@@ -105,7 +137,6 @@ texture = ExtResource("7_o06og")
 position = Vector2(1498, 338)
 scale = Vector2(0.5, 0.5)
 collision_layer = 32
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Platform2"]
 scale = Vector2(10, 0.5)
@@ -121,7 +152,6 @@ position = Vector2(830, 700)
 rotation = -0.453786
 scale = Vector2(1.5, 1)
 collision_layer = 32
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Walls/Slope3"]
 scale = Vector2(25, 0.852014)
@@ -136,7 +166,6 @@ position = Vector2(892, 836)
 rotation = 0.514872
 scale = Vector2(1.5, 1)
 collision_layer = 32
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Walls/Slope"]
 scale = Vector2(25, 0.852014)
@@ -151,7 +180,6 @@ position = Vector2(956, 394)
 rotation = -0.593412
 scale = Vector2(0.8, 1)
 collision_layer = 32
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Walls/Slope4"]
 scale = Vector2(25, 0.852014)
@@ -237,16 +265,28 @@ position = Vector2(634, 879)
 scale = Vector2(2, 2.7)
 
 [node name="Dog" parent="." instance=ExtResource("2_0yfpg")]
-position = Vector2(1079, 592)
+position = Vector2(1167, 592)
 
 [node name="DogJumpLauncherRight" parent="." instance=ExtResource("4_skfc8")]
-position = Vector2(152, 832)
+position = Vector2(240, 832)
 
 [node name="DogJumpLauncherLeft" parent="." instance=ExtResource("4_6ctwu")]
-position = Vector2(151, 798)
+position = Vector2(239, 798)
 
 [node name="Player" parent="." instance=ExtResource("1_quucb")]
-position = Vector2(1067, 814)
+position = Vector2(1155, 814)
+
+[node name="FortressExterior" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(275, 15)
+texture = ExtResource("22_yggtl")
+centered = false
+
+[node name="Light" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1223, 169)
+texture = ExtResource("23_1ms4u")
+centered = false
 
 [node name="Black" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -263,4 +303,11 @@ centered = false
 
 [node name="MainThemePlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_7241c")
+volume_db = -2.0
 script = ExtResource("16_siysq")
+
+[node name="InteractSuccessPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_kjho1")
+
+[node name="InteractFailPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_ql4r3")

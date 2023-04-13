@@ -33,7 +33,7 @@ func interact(interacter):
 	cd = max_cd
 	var text_inst = floating_text.instantiate()
 	if interacter.tool == "Bag":
-		interacter.tool = title
+		interacter.set_tool(title)
 		ui.set_tool(title)
 		text_inst.set_text("+ " + title)
 		queue_free()

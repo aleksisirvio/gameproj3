@@ -7,5 +7,6 @@
 layer = 70
 
 [node name="Explosion" type="Sprite2D" parent="."]
+texture_filter = 2
 texture = ExtResource("1_bb80f")
 script = ExtResource("2_x0uak")

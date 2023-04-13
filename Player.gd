@@ -16,8 +16,18 @@ Collision bit info:
 @onready var footstep_player = $FootstepPlayer
 @onready var jump_player = $JumpPlayer
 @onready var land_player = $LandPlayer
-@onready var interact_success_player = $InteractSuccessPlayer
-@onready var interact_fail_player = $InteractFailPlayer
+
+@onready var sprite = $Sprite
+@onready var tool_sprite = $Tool
+
+@onready var tool_dict = {
+	"Brush": [preload("res://Sprites/Tools/brush.png"), .5],
+	"Treat": [preload("res://Sprites/Tools/treat.png"), .5],
+	"Bag": [preload("res://Sprites/Tools/empty_poop_bag.png"), .5],
+	"Bag Filled With Poop": [preload("res://Sprites/Tools/full_poop_bag.png"), .5],
+	"Mouse Catcher": [preload("res://Sprites/Tools/mouse_catcher.png"), .5],
+	"Fire Extinguisher": [preload("res://Sprites/Tools/fire_extinguisher.png"), .2]
+}
 
 enum State { move, climb, pause }
 var state : State = State.move
@@ -74,14 +84,22 @@ func _process(delta):
 			pause()
 			return # Don't allow interacting while paused
 	
+	# Facing direction
+	if hmove == 1:
+		sprite.flip_h = false
+		tool_sprite.position.x = 20
+	if hmove == -1:
+		sprite.flip_h = true
+		tool_sprite.position.x = -20
+	
 	# Interacting with interactables
 	if Input.is_action_just_pressed("interact"):
 		for target in targets:
 			var success = target.interact(self)
 			if success:
-				interact_success_player.play()
+				get_parent().play_success()
 			else:
-				interact_fail_player.play()
+				get_parent().play_fail()
 	
 	prev_on_floor = on_floor
 	
@@ -130,7 +148,7 @@ func move():
 
 func init_climb():
 	velocity *= 0
-	position.x = ladder.position.x
+	position.x = ladder.position.x + 90 # This 90 is needed after moving center of the fortress to the right, no idea why
 	state = State.climb
 
 
@@ -149,6 +167,15 @@ func pause():
 	# Player does nothing while paused
 	pass
 
+	
+func set_tool(title):
+	tool = title
+	if tool_dict.has(title):
+		tool_sprite.texture = tool_dict.get(title)[0]
+		tool_sprite.scale = Vector2(tool_dict.get(title)[1], tool_dict.get(title)[1])
+	else:
+		tool_sprite.texture = null
+	
 	
 func _physics_process(_delta):
 	move_and_slide()

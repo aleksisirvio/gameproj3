@@ -39,21 +39,25 @@ func _process(_delta):
 	
 	# Exit out of the minigame
 	if Input.is_action_just_pressed("interact"):
-		player.init_move()
-		get_parent().toggle_black()
-		queue_free()
+		exit()
 
 
 func increment():
+	get_parent().play_success()
 	hits += 1
 	if hits >= hits_to_win:
-		player.init_move()
-		get_parent().toggle_black()
 		task_manager.pass_task(6) # Task.dance
-		queue_free()
+		exit()
 
 
 func decrement():
+	get_parent().play_fail()
 	if hits > 0:
 		hits -= 1
 		buttons[hits].get_node("Sprite").modulate.a = 1
+
+
+func exit():
+	player.init_move()
+	get_parent().toggle_black()
+	queue_free()
