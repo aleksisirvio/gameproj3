@@ -1,9 +1,16 @@
 extends Node2D
 
 
+@onready var main_menu = $MainMenu
+
+var scores = [0,0,0,0,0,0,0,0,0]
+
+
 func _ready():
 	randomize()
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	load_scores()
+	main_menu.set_scores()
 
 
 func _process(_delta):
@@ -17,4 +24,44 @@ func _process(_delta):
 	
 	# Exitting the game
 	if Input.is_action_just_pressed("menu"):
-		get_tree().quit()
+		if has_node("MainMenu"):
+			save_scores()
+			get_tree().quit()
+		elif has_node("Room"):
+			get_node("Room").queue_free()
+			get_tree().reload_current_scene()
+
+
+func add_score(new_score):
+	for i in range(0, scores.size()):
+		if new_score > scores[i]:
+			# Move all scores down
+			var j = scores.size() - 1
+			while j > i:
+				scores[j]= scores[j-1]
+				j -= 1
+			scores[i] = new_score
+			break
+	save_scores()
+
+
+func load_scores():
+	var save_file = FileAccess.open("user://servethedog.save", FileAccess.READ)
+	if save_file == null:
+		return
+	scores.clear()
+	while true:
+		var line = save_file.get_line()
+		if line == "":
+			break
+		scores.append(int(line))
+	print("Loaded scores: ", scores)
+	save_file.close()
+
+
+func save_scores():
+	var save_file = FileAccess.open("user://servethedog.save", FileAccess.WRITE)
+	print("Saved scores: ", scores)
+	for score in scores:
+		save_file.store_line(str(score))
+	save_file.close()

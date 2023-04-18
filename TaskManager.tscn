@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://TaskManager.gd" id="1_u5mwm"]
 [ext_resource type="AudioStream" uid="uid://c76h15hnnf7rv" path="res://Audio/task_arrival.wav" id="2_tagrk"]
 [ext_resource type="AudioStream" uid="uid://5rjxbxldb3ck" path="res://Audio/DogPoop.mp3" id="3_dl8hi"]
-[ext_resource type="AudioStream" uid="uid://22aogq8sipq7" path="res://Audio/TaskComplete.mp3" id="4_yjv15"]
-[ext_resource type="AudioStream" uid="uid://d00kjolformdm" path="res://Audio/TaskFail.mp3" id="5_i6ym0"]
+[ext_resource type="AudioStream" uid="uid://byubj5ngt5sso" path="res://Audio/TaskCompleteV2.mp3" id="4_07jrc"]
+[ext_resource type="AudioStream" uid="uid://c6imikljuj4pg" path="res://Audio/TaskFailV2.mp3" id="5_a13jr"]
 [ext_resource type="AudioStream" uid="uid://kmfbuaibc6en" path="res://Audio/10SecondsLeft.mp3" id="6_qbw5y"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_05yjj"]
@@ -24,11 +24,11 @@ stream = ExtResource("3_dl8hi")
 volume_db = 15.0
 
 [node name="TaskSuccessPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_yjv15")
-volume_db = 10.0
+stream = ExtResource("4_07jrc")
 
 [node name="TaskFailPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_i6ym0")
+stream = ExtResource("5_a13jr")
+volume_db = -10.0
 
 [node name="WarningPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_qbw5y")

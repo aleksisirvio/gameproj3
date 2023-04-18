@@ -56,8 +56,7 @@ theme_override_font_sizes/font_size = 30
 texture = ExtResource("3_6mjpd")
 centered = false
 
-[node name="MoneyText" type="Label" parent="Control"]
-layout_mode = 0
+[node name="MoneyText" type="Label" parent="Control/MoneyBox"]
 offset_left = 3.0
 offset_top = 3.0
 offset_right = 337.0

@@ -4,6 +4,7 @@ extends Node2D
 @onready var sky = $Sky
 @onready var interact_success_player = $InteractSuccessPlayer
 @onready var interact_fail_player = $InteractFailPlayer
+@onready var task_manager = $TaskManager
 
 @onready var interactables : Array = [
 	$CannonBallRack,
@@ -53,3 +54,7 @@ func play_success():
 
 func play_fail():
 	interact_fail_player.play()
+
+
+func tutorialize():
+	task_manager.tutorialize = true

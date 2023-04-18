@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://i41flf0da4qr"]
+
+[ext_resource type="Texture2D" uid="uid://m4gul1eqyf88" path="res://Sprites/dog_face.png" id="1_2vvn4"]
+
+[node name="Life" type="Sprite2D"]
+texture_filter = 2
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_2vvn4")

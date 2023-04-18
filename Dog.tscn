@@ -8,7 +8,7 @@
 size = Vector2(50, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y55l1"]
-size = Vector2(70, 50)
+size = Vector2(70, 61)
 
 [node name="Dog" type="CharacterBody2D"]
 collision_layer = 2
@@ -17,9 +17,11 @@ script = ExtResource("1_jqwhk")
 
 [node name="Interactable" parent="." instance=ExtResource("2_6xn4g")]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, 14)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_o2xcb")
-offset = Vector2(0, -15)
+offset = Vector2(0, -95)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ah5nw")
@@ -28,7 +30,7 @@ shape = SubResource("RectangleShape2D_ah5nw")
 collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mask"]
-position = Vector2(0, -10)
+position = Vector2(0, -15.5)
 shape = SubResource("RectangleShape2D_y55l1")
 
 [connection signal="body_entered" from="Mask" to="." method="_on_mask_body_entered"]

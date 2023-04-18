@@ -15,6 +15,7 @@ var max_task_cd		: float = 300
 var task_cd			: float = 1
 
 @onready var interactable = $Interactable
+@onready var sprite = $Sprite
 
 @onready var ui = get_parent().get_node("UI")
 @onready var task_manager = get_parent().get_node("TaskManager")
@@ -31,6 +32,12 @@ var wants : Array = [] # What does the dog want, e.g., "brush", "wash", "pet"...
 var wants_pos : Array = []
 
 var title : String = "Dog"
+
+var rot_dir : float = 1
+var rot_spd : float = 0
+var rot_acc : float = .2
+const max_rot_spd : float = 1
+const max_rot : float = 5
 
 
 func _ready():
@@ -57,16 +64,20 @@ func _process(delta):
 	
 	velocity.x = hmove * spd
 	
-	"""
-	if task_cd > 0:
-		task_cd -= 1 * delta
-		if !task_cd:
-			# Create new task
-			task_inst = dog_task.instantiate()
-			add_child(task_inst)
-			task_inst.position.y -= 80
-			want = "Treat"
-	"""
+	# Face forwards
+	if hmove == 1:
+		sprite.flip_h = true
+	if hmove == -1:
+		sprite.flip_h = false
+		
+	# Rotate for simple animation
+	if abs(rot_spd) < max_rot_spd or sign(rot_spd) != rot_dir:
+		rot_spd += rot_dir * rot_acc * delta * 60
+	sprite.rotation_degrees += rot_spd * delta * 60
+	if sprite.rotation_degrees >= max_rot:
+		rot_dir = -1
+	if sprite.rotation_degrees <= -max_rot:
+		rot_dir = 1
 			
 
 

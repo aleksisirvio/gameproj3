@@ -8,8 +8,9 @@
 script = ExtResource("1_i7tdv")
 
 [node name="PlayButton" type="Sprite2D" parent="."]
-position = Vector2(960, 340)
+position = Vector2(560, 340)
 texture = ExtResource("2_f6cft")
+metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="PlayButton"]
 offset_left = -280.0
@@ -21,25 +22,29 @@ theme_override_font_sizes/font_size = 100
 text = "Play"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="OptionsButton" type="Sprite2D" parent="."]
-position = Vector2(960, 540)
+[node name="TutorialButton" type="Sprite2D" parent="."]
+position = Vector2(560, 540)
 texture = ExtResource("2_f6cft")
+metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="OptionsButton"]
+[node name="Label" type="Label" parent="TutorialButton"]
 offset_left = -280.0
 offset_top = -65.0
 offset_right = 280.0
 offset_bottom = 65.0
 theme_override_fonts/font = ExtResource("3_7kn6o")
 theme_override_font_sizes/font_size = 100
-text = "Options"
+text = "Tutorial"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ExitButton" type="Sprite2D" parent="."]
-position = Vector2(960, 740)
+position = Vector2(560, 740)
 texture = ExtResource("2_f6cft")
+metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="ExitButton"]
 offset_left = -280.0
@@ -52,3 +57,64 @@ text = "Exit
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CreditsTitle" type="Label" parent="."]
+offset_left = 1121.0
+offset_top = 740.0
+offset_right = 1333.0
+offset_bottom = 804.0
+theme_override_fonts/font = ExtResource("3_7kn6o")
+theme_override_font_sizes/font_size = 50
+text = "Credits"
+
+[node name="Credits" type="Label" parent="."]
+offset_left = 1125.0
+offset_top = 815.0
+offset_right = 1399.0
+offset_bottom = 1000.0
+theme_override_fonts/font = ExtResource("3_7kn6o")
+theme_override_font_sizes/font_size = 30
+text = "Daniel González
+Rana Ince
+Aleksi Sirviö
+Emily Zhang
+Rhea Zhu"
+
+[node name="Credits2" type="Label" parent="."]
+offset_left = 1362.0
+offset_top = 815.0
+offset_right = 1783.0
+offset_bottom = 1000.0
+theme_override_fonts/font = ExtResource("3_7kn6o")
+theme_override_font_sizes/font_size = 30
+text = "- music and sound effects
+- game design
+- programming
+- project management, narrative
+- art and animation"
+
+[node name="ScoresTitle" type="Label" parent="."]
+offset_left = 1117.0
+offset_top = 65.0
+offset_right = 1354.0
+offset_bottom = 129.0
+theme_override_fonts/font = ExtResource("3_7kn6o")
+theme_override_font_sizes/font_size = 50
+text = "High Scores"
+
+[node name="Scores" type="Label" parent="."]
+offset_left = 1122.0
+offset_top = 150.0
+offset_right = 1396.0
+offset_bottom = 483.0
+theme_override_fonts/font = ExtResource("3_7kn6o")
+theme_override_font_sizes/font_size = 30
+text = "1. 0
+2. 0
+3. 0
+4. 0
+5. 0
+6. 0
+7. 0
+8. 0
+9. 0"

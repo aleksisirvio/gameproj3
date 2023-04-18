@@ -23,11 +23,13 @@ var desc : String = "TASK ERROR"
 var pos : int = 0
 var warning_played : bool = false
 var yellow : bool = false
+var tutorialize : bool = false
 
 
 func _process(delta):
 	# Set bar size and timer text
-	timer -= delta * 60
+	if !tutorialize:
+		timer -= delta * 60
 	timer_label.text = str(ceil(float(timer) / 60.0))
 	bar.scale.x = timer / max_timer * 262
 	

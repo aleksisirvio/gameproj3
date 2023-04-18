@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dyj1fsauioldy"]
+[gd_scene load_steps=10 format=3 uid="uid://dyj1fsauioldy"]
 
 [ext_resource type="Script" path="res://CannonController.gd" id="1_gu2f1"]
 [ext_resource type="Script" path="res://CannonView.gd" id="1_kju7d"]
@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://yegphnwtt058" path="res://Sprites/cannon_scope.png" id="4_443ru"]
 [ext_resource type="AudioStream" uid="uid://cqbhbq3otp1fu" path="res://Audio/CannonShootSFX.mp3" id="5_8j0u0"]
 [ext_resource type="AudioStream" uid="uid://civw0d0n51nh3" path="res://Audio/CannonBallHit.mp3" id="6_mhn0p"]
+[ext_resource type="AudioStream" uid="uid://bh0ftg4o66k8m" path="res://Audio/PoopBallHit.mp3" id="7_j65y4"]
 [ext_resource type="AudioStream" uid="uid://bxuw3w8y4smdj" path="res://Audio/CannonBallMiss.mp3" id="7_ufa5x"]
+[ext_resource type="AudioStream" uid="uid://btoot51ht0yal" path="res://Audio/DamageReceived.mp3" id="8_31sw2"]
 
 [node name="CannonView" type="Node"]
 script = ExtResource("1_kju7d")
@@ -41,6 +43,16 @@ stream = ExtResource("5_8j0u0")
 
 [node name="HitPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_mhn0p")
+volume_db = 5.0
+
+[node name="PoopHitPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_j65y4")
+volume_db = 7.0
 
 [node name="MissPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_ufa5x")
+volume_db = 2.0
+
+[node name="TakeDamagePlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_31sw2")
+volume_db = -8.0

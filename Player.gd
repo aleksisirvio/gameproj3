@@ -42,10 +42,12 @@ var vmove : int = 0
 var on_floor : bool = false
 var prev_on_floor : bool = false
 
-#var check_target = null	# Who player interacts with upon pressing "interact" key
 var targets : Array = []	# All interactables player is colliding with
 var tool = ""				# The tool that player is currently holding
 var ladder = null
+
+var max_footstep_cd : float = 22
+var footstep_cd : float = 0
 
 
 func _ready():
@@ -76,7 +78,7 @@ func _process(delta):
 	# State machine
 	match state:
 		State.move:
-			move()
+			move(delta)
 			velocity.y = clamp(velocity.y + grav * delta, -max_spd, max_spd)
 		State.climb:
 			climb()
@@ -84,13 +86,18 @@ func _process(delta):
 			pause()
 			return # Don't allow interacting while paused
 	
-	# Facing direction
-	if hmove == 1:
-		sprite.flip_h = false
-		tool_sprite.position.x = 20
-	if hmove == -1:
-		sprite.flip_h = true
-		tool_sprite.position.x = -20
+	if hmove == 0:
+		sprite.play("idle")
+		sprite.scale = Vector2(.2, .2)
+	else:
+		sprite.play("walk")
+		sprite.scale = Vector2(.19, .19)
+		if hmove == 1:
+			sprite.flip_h = true
+			tool_sprite.position.x = 20
+		if hmove == -1:
+			sprite.flip_h = false
+			tool_sprite.position.x = -20
 	
 	# Interacting with interactables
 	if Input.is_action_just_pressed("interact"):
@@ -121,10 +128,8 @@ func init_move():
 	state = State.move
 
 
-func move():
+func move(delta):
 	velocity.x = hmove * spd
-	#if Input.is_action_pressed("sprint"):
-	#	velocity.x *= 2
 	
 	# Jumping
 	if Input.is_action_pressed("jump") and on_floor:
@@ -144,6 +149,14 @@ func move():
 			
 	if on_floor and !prev_on_floor:
 		land_player.play()
+	
+	if hmove != 0 and on_floor:
+		footstep_cd -= delta * 60
+		if footstep_cd <= 0:
+			footstep_cd = max_footstep_cd
+			footstep_player.play()
+	else:
+		footstep_cd = 0
 	
 
 func init_climb():

@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://c1pvf4ipgrfg2"]
 
-[ext_resource type="Texture2D" uid="uid://bwo1y4d8xgl7y" path="res://Sprites/task_box.png" id="1_e46qv"]
 [ext_resource type="FontFile" uid="uid://bb57ggvwo4ffg" path="res://Fonts/berlin_sans_fb.TTF" id="1_t7wbf"]
 [ext_resource type="Texture2D" uid="uid://dkm7ssh0ycqhs" path="res://Sprites/task_bar.png" id="2_0il86"]
 [ext_resource type="Script" path="res://TaskText.gd" id="2_7s1oq"]
+[ext_resource type="Texture2D" uid="uid://b5q0hkntq7yt1" path="res://Sprites/task_box_75.png" id="2_x0stp"]
 
 [node name="Task" type="Control"]
 layout_mode = 3
@@ -14,7 +14,7 @@ script = ExtResource("2_7s1oq")
 
 [node name="Box" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("1_e46qv")
+texture = ExtResource("2_x0stp")
 centered = false
 
 [node name="Bar" type="Sprite2D" parent="."]

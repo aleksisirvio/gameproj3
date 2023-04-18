@@ -23,13 +23,13 @@
 [ext_resource type="PackedScene" uid="uid://dkv7xftc581oa" path="res://DancePad.tscn" id="12_m1fxm"]
 [ext_resource type="PackedScene" uid="uid://dnqvd34satpg8" path="res://TaskManager.tscn" id="13_qxmpo"]
 [ext_resource type="PackedScene" uid="uid://ctd8g7a3gy756" path="res://Microphone.tscn" id="13_whyww"]
-[ext_resource type="AudioStream" uid="uid://cslll3n3q8qs4" path="res://Audio/spookybutler_hq.wav" id="15_7241c"]
 [ext_resource type="Script" path="res://MainThemePlayer.gd" id="16_siysq"]
 [ext_resource type="Texture2D" uid="uid://ifjwd3ptpibs" path="res://Sprites/black.png" id="20_3gr0j"]
 [ext_resource type="PackedScene" uid="uid://dbk3cou0b6s5n" path="res://FireExtinguisher.tscn" id="20_6dbgj"]
 [ext_resource type="Texture2D" uid="uid://qj3pqltibxc8" path="res://Sprites/Backgrounds/fortress_outline.png" id="22_yggtl"]
 [ext_resource type="Texture2D" uid="uid://cjgeny1nue8go" path="res://Sprites/Backgrounds/light.png" id="23_1ms4u"]
 [ext_resource type="AudioStream" uid="uid://bog3v44skbtfp" path="res://Audio/InteractionSuccess.mp3" id="27_434gp"]
+[ext_resource type="AudioStream" uid="uid://csuu4uaki280e" path="res://Audio/main_theme.wav" id="28_a2gfs"]
 [ext_resource type="AudioStream" uid="uid://b06ayjsk58vf8" path="res://Audio/InteractionFail.mp3" id="28_m6j7t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vb1li"]
@@ -302,7 +302,7 @@ centered = false
 [node name="TaskManager" parent="." instance=ExtResource("13_qxmpo")]
 
 [node name="MainThemePlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("15_7241c")
+stream = ExtResource("28_a2gfs")
 volume_db = -2.0
 script = ExtResource("16_siysq")
 

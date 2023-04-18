@@ -33,6 +33,8 @@ func shoot(who_created, target_pos, what_type):
 	# Get rid of poop cleaning task if shooting poop
 	if type == "Bag Filled With Poop":
 		get_parent().get_parent().get_node("TaskManager").pass_task(3)
+		get_parent().get_parent().get_node("Player").set_tool("")
+		get_parent().get_parent().get_node("UI").set_tool("-")
 	
 	get_parent().play_shoot()
 
@@ -85,7 +87,10 @@ func _process(delta):
 					target.take_damage(100)
 				else:
 					target.take_damage(1)
-				get_parent().play_hit()
+				if type == "Bag Filled With Poop":
+					get_parent().play_poop_hit()
+				else:
+					get_parent().play_hit()
 			else:
 				get_parent().play_miss()
 			

@@ -11,5 +11,10 @@ res://EnemyFortress.tscn
 res://TaskText.tscn
 res://TaskManager.tscn
 res://Explosion.tscn
-res://FireExtinguisher.tscn
-res://TaskText.gd
+res://MainMenu.tscn
+res://Life.tscn
+res://GoToMainMenu.tscn
+res://Player.gd
+res://Game.gd
+res://Brush.tscn
+res://MouseCatcher.tscn

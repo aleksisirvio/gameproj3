@@ -6,7 +6,9 @@ extends Node
 @onready var controller = $CannonController
 @onready var shoot_player = $ShootPlayer
 @onready var hit_player = $HitPlayer
+@onready var poop_hit_player = $PoopHitPlayer
 @onready var miss_player = $MissPlayer
+@onready var take_damage_player = $TakeDamagePlayer
 
 
 func _ready():
@@ -41,6 +43,10 @@ func is_active():
 
 func play_hit():
 	hit_player.play()
+
+
+func play_poop_hit():
+	poop_hit_player.play()
 	
 	
 func play_miss():
@@ -49,3 +55,7 @@ func play_miss():
 	
 func play_shoot():
 	shoot_player.play()
+	
+
+func play_take_damage():
+	take_damage_player.play()

@@ -38,6 +38,9 @@ func _process(delta):
 		get_parent().get_node("CannonController").shake()
 		get_parent().get_parent().shake()
 		
+		# Play sound
+		get_parent().play_take_damage()
+		
 		# Explosive flash if player is in cannon view
 		get_parent().get_node("Scope").add_child(flash.instantiate())
 		
