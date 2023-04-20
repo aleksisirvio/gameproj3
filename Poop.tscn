@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://soj0kwdc8ure"]
+[gd_scene load_steps=6 format=3 uid="uid://soj0kwdc8ure"]
 
 [ext_resource type="Script" path="res://Poop.gd" id="1_vdags"]
 [ext_resource type="PackedScene" uid="uid://r63kj61hl176" path="res://Interactable.tscn" id="2_f82ux"]
 [ext_resource type="Texture2D" uid="uid://vcby61dthglf" path="res://Sprites/poop.png" id="3_qyq5l"]
+[ext_resource type="PackedScene" uid="uid://bmj6ir72cviid" path="res://Glow.tscn" id="3_vursw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1pjsl"]
 size = Vector2(36, 30)
@@ -14,9 +15,13 @@ script = ExtResource("1_vdags")
 
 [node name="Interactable" parent="." instance=ExtResource("2_f82ux")]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Glow" parent="." instance=ExtResource("3_vursw")]
 scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.17, 0.17)
 texture = ExtResource("3_qyq5l")
+offset = Vector2(-25, -3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)

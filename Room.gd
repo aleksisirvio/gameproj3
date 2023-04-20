@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var glow = preload("res://Glow.tscn")
+
 @onready var black = $Black
 @onready var sky = $Sky
 @onready var interact_success_player = $InteractSuccessPlayer
@@ -12,11 +14,29 @@ extends Node2D
 	$PoopBag,
 	$MouseCatcher,
 	$Brush,
-	$DancePad
+	$DancePad,
+	$Microphone
 ]
+
 
 var max_shake_timer : float = 60
 var shake_timer : float = 0
+
+var glow_sizes : Array = [ 1.5, 1.5, 1.25, 1.5, .75, .75, .75, .75, 2, .75]
+
+
+func _ready():
+	# Add glow to interactables
+	var inters = [$Cannon, $TrashCan, $FireExtinguisher]
+	inters.append_array(interactables)
+	for i in range(0, inters.size()):
+		var inter = inters[i]
+		inter.z_index = 1
+		var glow_inst = glow.instantiate()
+		glow_inst.z_index = -1
+		glow_inst.modulate.a = .75
+		glow_inst.scale = Vector2(glow_sizes[i], glow_sizes[i])
+		inter.add_child(glow_inst)
 
 
 func _process(delta):

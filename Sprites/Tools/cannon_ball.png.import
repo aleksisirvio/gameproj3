@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dct6xwv4k2nip"
-path="res://.godot/imported/butler.png-d8660ef414942e31c2dc79701d3b9746.ctex"
+uid="uid://dywditqvc5b70"
+path="res://.godot/imported/cannon_ball.png-df5cc2ba83123dba27ffc52f89a2d58c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/butler.png"
-dest_files=["res://.godot/imported/butler.png-d8660ef414942e31c2dc79701d3b9746.ctex"]
+source_file="res://Sprites/Tools/cannon_ball.png"
+dest_files=["res://.godot/imported/cannon_ball.png-df5cc2ba83123dba27ffc52f89a2d58c.ctex"]
 
 [params]
 

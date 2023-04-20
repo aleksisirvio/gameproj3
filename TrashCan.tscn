@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://TrashCan.gd" id="1_ttada"]
 [ext_resource type="PackedScene" uid="uid://r63kj61hl176" path="res://Interactable.tscn" id="2_ovs0w"]
-[ext_resource type="Texture2D" uid="uid://0yk17f0a4dcr" path="res://Sprites/trash_can.png" id="3_c3b84"]
+[ext_resource type="Texture2D" uid="uid://4fif6s6n2pwc" path="res://Sprites/Interactables/trash_can.png" id="3_36ly0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1pjsl"]
 size = Vector2(50, 70)
@@ -15,7 +15,8 @@ script = ExtResource("1_ttada")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("3_c3b84")
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_36ly0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1pjsl")

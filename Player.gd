@@ -26,7 +26,8 @@ Collision bit info:
 	"Bag": [preload("res://Sprites/Tools/empty_poop_bag.png"), .5],
 	"Bag Filled With Poop": [preload("res://Sprites/Tools/full_poop_bag.png"), .5],
 	"Mouse Catcher": [preload("res://Sprites/Tools/mouse_catcher.png"), .5],
-	"Fire Extinguisher": [preload("res://Sprites/Tools/fire_extinguisher.png"), .2]
+	"Fire Extinguisher": [preload("res://Sprites/Tools/fire_extinguisher.png"), .2],
+	"Cannon Ball": [preload("res://Sprites/Tools/cannon_ball.png"), .2]
 }
 
 enum State { move, climb, pause }
@@ -173,6 +174,9 @@ func climb():
 
 func init_pause():
 	velocity.x = 0
+	velocity.y = 0
+	hmove = 0
+	sprite.play("idle")
 	state = State.pause
 	
 

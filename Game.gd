@@ -9,6 +9,7 @@ var scores = [0,0,0,0,0,0,0,0,0]
 func _ready():
 	randomize()
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), .5)
 	load_scores()
 	main_menu.set_scores()
 
@@ -55,13 +56,11 @@ func load_scores():
 		if line == "":
 			break
 		scores.append(int(line))
-	print("Loaded scores: ", scores)
 	save_file.close()
 
 
 func save_scores():
 	var save_file = FileAccess.open("user://servethedog.save", FileAccess.WRITE)
-	print("Saved scores: ", scores)
 	for score in scores:
 		save_file.store_line(str(score))
 	save_file.close()

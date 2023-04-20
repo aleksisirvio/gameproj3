@@ -86,7 +86,7 @@ volume_db = -5.0
 
 [node name="JumpPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_i0dy4")
-volume_db = -8.0
+volume_db = -10.0
 
 [node name="LandPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_2m1ew")

@@ -1,8 +1,8 @@
+Sprite2D
+Label
 AnimatedSprite2D
 ParallaxBackground
 ParallaxLayer
-Sprite2D
-Label
 Node
 AudioStreamPlayer
 Control

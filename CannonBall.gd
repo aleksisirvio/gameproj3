@@ -2,6 +2,7 @@ extends ParallaxBackground
 
 
 @onready var explosion = preload("res://Explosion.tscn")
+@onready var poop_img = preload("res://Sprites/poop.png")
 
 @onready var sprite = $Sprite2D
 
@@ -35,6 +36,8 @@ func shoot(who_created, target_pos, what_type):
 		get_parent().get_parent().get_node("TaskManager").pass_task(3)
 		get_parent().get_parent().get_node("Player").set_tool("")
 		get_parent().get_parent().get_node("UI").set_tool("-")
+		
+		sprite.texture = poop_img
 	
 	get_parent().play_shoot()
 
@@ -53,8 +56,8 @@ func _process(delta):
 	sprite.position.y += arc_spd * delta * 60
 		
 	# Cannon ball size
-	sprite.scale.x -= .009 * delta * 60
-	sprite.scale.y -= .009 * delta * 60
+	sprite.scale.x -= 1.5 * .009 * delta * 60
+	sprite.scale.y -= 1.5 * .009 * delta * 60
 	
 	# Deal damage and destroy
 	if timer <= 0:

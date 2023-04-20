@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7lde7718fpfl"
-path="res://.godot/imported/microphone_old.png-0a04a148975859e379509d3004d1e669.ctex"
+uid="uid://4fif6s6n2pwc"
+path="res://.godot/imported/trash_can.png-6289d97a78e27c0122755acb62dae39f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/microphone_old.png"
-dest_files=["res://.godot/imported/microphone_old.png-0a04a148975859e379509d3004d1e669.ctex"]
+source_file="res://Sprites/Interactables/trash_can.png"
+dest_files=["res://.godot/imported/trash_can.png-6289d97a78e27c0122755acb62dae39f.ctex"]
 
 [params]
 

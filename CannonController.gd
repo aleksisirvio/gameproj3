@@ -77,7 +77,7 @@ func _process(delta):
 	# Shoot the cannon
 	if Input.is_action_just_pressed("jump"):
 		if cannon_ball == null and ball != "":
-			player.tool = ""
+			player.set_tool("")
 			ui.set_tool("-")
 			scope.add_child(flash_res.instantiate())
 			var cannon_ball_inst = cannon_ball_res.instantiate()

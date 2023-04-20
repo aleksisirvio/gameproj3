@@ -1,7 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://chfmqbel2ng0i"]
+[gd_scene load_steps=3 format=3 uid="uid://chfmqbel2ng0i"]
 
 [ext_resource type="Texture2D" uid="uid://bloxclpch7jbv" path="res://Sprites/fire.png" id="1_n68dk"]
+[ext_resource type="Script" path="res://Fire.gd" id="2_wcc82"]
 
 [node name="Fire" type="Sprite2D"]
-position = Vector2(0, -21)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_n68dk")
+offset = Vector2(0, -200)
+script = ExtResource("2_wcc82")

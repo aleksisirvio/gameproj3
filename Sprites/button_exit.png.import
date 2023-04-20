@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nixwt0da4s0f"
-path="res://.godot/imported/cannon_ball_rack_old.png-914179e80a35b9b88d586eb0f4b4d44f.ctex"
+uid="uid://btsjao212cy0m"
+path="res://.godot/imported/button_exit.png-7ca37336b264e92c3f9594aec8283888.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/cannon_ball_rack_old.png"
-dest_files=["res://.godot/imported/cannon_ball_rack_old.png-914179e80a35b9b88d586eb0f4b4d44f.ctex"]
+source_file="res://Sprites/button_exit.png"
+dest_files=["res://.godot/imported/button_exit.png-7ca37336b264e92c3f9594aec8283888.ctex"]
 
 [params]
 

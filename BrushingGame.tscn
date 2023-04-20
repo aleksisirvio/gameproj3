@@ -12,7 +12,17 @@ script = ExtResource("1_ogrnq")
 [node name="Bg" type="Sprite2D" parent="."]
 texture = ExtResource("2_iud3i")
 
+[node name="Label" type="Label" parent="."]
+offset_left = -34.0
+offset_top = -68.0
+offset_right = 35.0
+offset_bottom = 68.0
+theme_override_fonts/font = ExtResource("7_373r3")
+theme_override_font_sizes/font_size = 120
+text = "X"
+
 [node name="HitColor" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("3_efg4c")
 
 [node name="HitsLabel" type="Label" parent="."]

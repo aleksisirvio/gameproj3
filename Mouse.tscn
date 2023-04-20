@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmh7d082lj38"]
+[gd_scene load_steps=9 format=3 uid="uid://dmh7d082lj38"]
 
 [ext_resource type="Script" path="res://Mouse.gd" id="1_ovb0n"]
 [ext_resource type="PackedScene" uid="uid://r63kj61hl176" path="res://Interactable.tscn" id="2_3g0lq"]
+[ext_resource type="PackedScene" uid="uid://bmj6ir72cviid" path="res://Glow.tscn" id="3_0pv5n"]
 [ext_resource type="Texture2D" uid="uid://b5wy8et4lucmp" path="res://Sprites/Mouse/mouse idle right_interactable.png" id="3_42t85"]
 [ext_resource type="Texture2D" uid="uid://0sf34vjtgfwl" path="res://Sprites/Mouse/mouse running right_interactable.png" id="4_xibui"]
 [ext_resource type="Texture2D" uid="uid://guxpbnwdchwh" path="res://Sprites/Mouse/mouse walking right_interactable.png" id="5_4gcir"]
@@ -32,6 +33,9 @@ collision_mask = 36
 script = ExtResource("1_ovb0n")
 
 [node name="Interactable" parent="." instance=ExtResource("2_3g0lq")]
+
+[node name="Glow" parent="." instance=ExtResource("3_0pv5n")]
+scale = Vector2(0.5, 0.5)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

@@ -87,25 +87,25 @@ scale = Vector2(0.75, 0.75)
 position = Vector2(923, 363)
 
 [node name="PoopBag" parent="." instance=ExtResource("5_jofpx")]
-position = Vector2(1231, 755)
+position = Vector2(502, 413)
 
 [node name="TrashCan" parent="." instance=ExtResource("7_2ll8m")]
-position = Vector2(515, 763)
+position = Vector2(465, 760)
 
 [node name="FireExtinguisher" parent="." instance=ExtResource("20_6dbgj")]
 position = Vector2(1364, 498)
 
 [node name="MouseCatcher" parent="." instance=ExtResource("10_8r8qh")]
-position = Vector2(1161, 259)
+position = Vector2(1231, 816)
 
 [node name="Brush" parent="." instance=ExtResource("11_b4qmi")]
-position = Vector2(384, 742)
+position = Vector2(653, 406)
 
 [node name="DancePad" parent="." instance=ExtResource("12_m1fxm")]
 position = Vector2(950, 907)
 
 [node name="Microphone" parent="." instance=ExtResource("13_whyww")]
-position = Vector2(1304, 256)
+position = Vector2(1210, 257)
 
 [node name="Walls" type="Node2D" parent="."]
 visible = false
@@ -274,7 +274,8 @@ position = Vector2(240, 832)
 position = Vector2(239, 798)
 
 [node name="Player" parent="." instance=ExtResource("1_quucb")]
-position = Vector2(1155, 814)
+z_index = 2
+position = Vector2(1129, 771)
 
 [node name="FortressExterior" type="Sprite2D" parent="."]
 texture_filter = 1

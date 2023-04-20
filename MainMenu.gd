@@ -7,6 +7,7 @@ extends Node
 @onready var tutorial_button = $TutorialButton
 @onready var exit_button = $ExitButton
 @onready var scores_label = $Scores
+@onready var interact_success_player = $InteractSuccessPlayer
 
 @onready var buttons : Array = [play_button, tutorial_button, exit_button]
 
@@ -14,9 +15,9 @@ var pos : int = 0
 
 
 func _ready():
-	play_button.modulate.a = .5
-	tutorial_button.modulate.a = .5
-	exit_button.modulate.a = .5
+	play_button.modulate.a = .3
+	tutorial_button.modulate.a = .3
+	exit_button.modulate.a = .3
 
 
 func _process(_delta):
@@ -25,6 +26,9 @@ func _process(_delta):
 		vmove = 1
 	if Input.is_action_just_pressed("up"):
 		vmove -= 1
+	
+	if vmove != 0:
+		interact_success_player.play()
 	
 	pos += vmove
 	if pos < 0:
